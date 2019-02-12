@@ -1,0 +1,39 @@
+
+
+{%  extends  'base.html' %}
+
+{% block head %}
+
+<title> House information </title>
+<meta name="description" content="get information about a clients home">
+
+{% endblock %}
+
+
+{% block content %}
+<div class='c3'>
+	<form action=" /value">
+		<h3> Please Provide the following information </h3>
+
+		{% for feature in features %}
+		{{feature}}
+		<input type="text" name="name">   <br/> <br/>
+		{% endfor %}
+
+		{% for feature in boolean_features%}
+		{{feature}}
+		<select>
+			<option value="yes">YES</option>
+            <option value="no">NO</option>
+		</select>
+		{% endfor %}
+		<br> <br/> <br/>
+		<input type="submit" value="Please Submit Form">
+
+	</form>
+	
+ 	
+	
+</div>
+
+{% endblock %}
