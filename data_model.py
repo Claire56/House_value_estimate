@@ -22,25 +22,26 @@ class House(db.Model):
     year_built = db.Column(db.String(14), nullable=True)
     stories = db.Column(db.Integer, nullable=True)
     beds = db.Column(db.Integer, nullable=True)
-    baths = db.Column(db.Integer, nullable=True)
+    full_baths = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(10), nullable=True)
     half_baths = db.Column(db.Integer, nullable = True )
     livable_sqft = db.Column(db.Integer, nullable=True)
     total_sqft = db.Column(db.Integer, nullable=True)
     garage_sqft = db.Column(db.Integer, nullable=True)
     carport_sqft = db.Column(db.Integer, nullable=True)
-    has_fireplace = db.Column(db.String(14), nullable=True)    #boleean
-    has_pool = db.Column(db.Integer, nullable=True)   #bool
-    has_central_cooling = db.Column(db.Integer, nullable=True) #bool
-    has_central_heating = db.Column(db.Integer, nullable=True)    #bool
+    fireplace = db.Column(db.Integer, nullable=True)    
+    pool = db.Column(db.Integer, nullable=True)   #bool
+    central_cooling = db.Column(db.Integer, nullable=True) 
+    central_heating = db.Column(db.Integer, nullable=True)    #
     sale_price = db.Column(db.Integer, nullable = True )
     garage_type_detached = db.Column(db.Integer, nullable=True) 
     garage_type_attached = db.Column(db.Integer, nullable=True) 
-    city_Wendybury =db.Column(db.Integer, nullable=True)
+    Wendybury =db.Column(db.Integer, nullable=True)
     East_Lucas =db.Column(db.Integer, nullable=True)
     North_Erinville = db.Column(db.Integer, nullable=True)
     Port_Andrealand =db.Column(db.Integer, nullable=True)
-    Port_Jonathanborough =db.Column(db.Integer, nullable=True)
+    Port_Jonathanborough =db.Column(db.Integer, nullable=False)
+    West_Ann =db.Column(db.Integer,nullable=False)
 
 
 
@@ -61,7 +62,7 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///house_estimates'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///homes'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)

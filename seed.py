@@ -22,32 +22,31 @@ def load_houses():
     for row in open("pop_cities.csv"):
         row = row.rstrip()
         row = row.split(',')
-        print(row[2:7])
-        
-
-        year_built ,stories ,beds ,full_baths ,half_baths = row[2:7] 
-
-        total_sqft ,garage_sqft ,carport_sqft ,livable_sqft,has_fireplace ,has_pool,baths,zipcode ,
-        has_central_cooling ,has_central_heating ,sale_price,garage_type_detached ,
-        garage_type_attached ,city_Wendybury ,East_Lucas,North_Erinville,
-        Port_Andrealand ,Port_Jonathanborough = row[2:]
+        row = row[2:]
 
 
-        house = House(year_built=year_built ,stories=stories ,beds=beds,baths=baths ,zipcode=zipcode ,
-            half_baths=half_baths,half_baths=half_baths,livable_sqft =livable_sqft,total_sqft=total_sqft ,
-            garage_sqft=garage_sqft ,carport_sqft=carport_sqft ,has_fireplace=has_fireplace ,
-            has_pool=has_pool,has_central_cooling=has_central_cooling ,
-            has_central_heating=has_central_heating ,sale_price=sale_price,
+        year_built ,stories ,beds ,full_baths ,half_baths,livable_sqft, total_sqft = row[:7] 
+
+        garage_sqft,carport_sqft,fireplace ,pool,central_heating,central_cooling = row[7:13]
+
+        zipcode, sale_price, garage_type_attached, garage_type_detached, East_Lucas =row[13:18]
+        North_Erinville, Port_Andrealand, Port_Jonathanborough, Wendybury, West_Ann =row[18:]
+
+
+
+        house = House(year_built=year_built ,stories=stories ,beds=beds,full_baths=full_baths ,zipcode=zipcode ,
+            half_baths=half_baths,livable_sqft =livable_sqft,total_sqft=total_sqft ,
+            garage_sqft=garage_sqft ,carport_sqft=carport_sqft ,fireplace=fireplace ,
+            pool=pool, central_cooling =central_cooling ,central_heating=central_heating ,sale_price=sale_price,
             garage_type_detached=garage_type_detached ,garage_type_attached=garage_type_attached ,
-            city_Wendybury=city_Wendybury ,East_Lucas=East_Lucas,North_Erinville=North_Erinville,
-            Port_Andrealand=Port_Andrealand ,Port_Jonathanborough = Port_Jonathanborough)
+            Wendybury=Wendybury ,East_Lucas=East_Lucas,North_Erinville=North_Erinville,West_Ann=West_Ann,
+            Port_Andrealand =Port_Andrealand ,Port_Jonathanborough = Port_Jonathanborough)
 
         # We need to add to the session or it won't ever be stored
         db.session.add(house)
 
     # Once we're done, we should commit our work
     db.session.commit()
-
 
 
 
@@ -73,6 +72,5 @@ if __name__ == "__main__":
 
     # Import different types of data
     load_houses()
-    load_ratings()
     set_val_user_id()
 
