@@ -21,9 +21,10 @@ class House(db.Model):
     house_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     year_built = db.Column(db.String(14), nullable=True)
     stories = db.Column(db.Integer, nullable=True)
+    beds = db.Column(db.Integer, nullable=True)
     baths = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(10), nullable=True)
-    half_bathrooms = db.Column(db.Integer, nullable = True )
+    half_baths = db.Column(db.Integer, nullable = True )
     livable_sqft = db.Column(db.Integer, nullable=True)
     total_sqft = db.Column(db.Integer, nullable=True)
     garage_sqft = db.Column(db.Integer, nullable=True)
@@ -60,7 +61,7 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///ratings'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///house_estimates'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
