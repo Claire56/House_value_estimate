@@ -22,14 +22,27 @@ def load_houses():
     # Read u.user file and insert data
     for row in open("pop_cities.csv"):
         row = row.rstrip()
-        user_id, age, gender, occupation, zipcode = row.split("|")
+        row = row.split()
+        
 
-        house = User(user_id=user_id,
-                    age=age,
-                    zipcode=zipcode)
+        year_built ,stories ,baths ,zipcode ,half_bathrooms ,livable_sqft ,
+        total_sqft ,garage_sqft ,carport_sqft ,has_fireplace ,has_pool,
+        has_central_cooling ,has_central_heating ,sale_price,garage_type_detached ,
+        garage_type_attached ,city_Wendybury ,East_Lucas,North_Erinville,
+        Port_Andrealand ,Port_Jonathanborough = row[2:]
+
+
+        house = House(year_built=year_built ,stories=stories ,baths=baths ,zipcode=zipcode ,
+            half_bathrooms=half_bathrooms ,livable_sqft =livable_sqft,total_sqft=total_sqft ,
+            garage_sqft=garage_sqft ,carport_sqft=carport_sqft ,has_fireplace=has_fireplace ,
+            has_pool=has_pool,has_central_cooling=has_central_cooling ,
+            has_central_heating=has_central_heating ,sale_price=sale_price,
+            garage_type_detached=garage_type_detached ,garage_type_attached=garage_type_attached ,
+            city_Wendybury=city_Wendybury ,East_Lucas=East_Lucas,North_Erinville=North_Erinville,
+            Port_Andrealand=Port_Andrealand ,Port_Jonathanborough = Port_Jonathanborough)
 
         # We need to add to the session or it won't ever be stored
-        db.session.add(user)
+        db.session.add(house)
 
     # Once we're done, we should commit our work
     db.session.commit()
