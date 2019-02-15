@@ -30,13 +30,13 @@ house_to_value = [
     0,      # Amystad
     1,      # Brownport
     0,      # North Erinville
-    0,      # Port Adamtown
+    0,      # West Ann
     0,      # Port Andrealand
-    0,      # Port Daniel
     0,      # Port Jonathanborough
     
 ]
-zipcodes 10250,11295 ,11510,10748,11911
+
+#zipcodes 10250,11295 ,11510,10748,11911
 
 
 # scikit-learn assumes you want to predict the values for lots of houses at once, so it expects an array.

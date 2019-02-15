@@ -28,7 +28,7 @@ class House(db.Model):
     livable_sqft = db.Column(db.Integer, nullable=True)
     total_sqft = db.Column(db.Integer, nullable=True)
     garage_sqft = db.Column(db.Integer, nullable=True)
-    carport_sqft = db.Column(db.Boolean, nullable=True)
+    carport_sqft = db.Column(db.Integer, nullable=True)
     fireplace = db.Column(db.Boolean, nullable=True)    
     pool = db.Column(db.Boolean, nullable=True)   #bool
     central_cooling = db.Column(db.Boolean, nullable=True) 

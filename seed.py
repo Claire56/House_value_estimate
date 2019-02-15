@@ -21,6 +21,7 @@ def load_houses():
     # Read u.user file and insert data
     with open("pop_cities.csv")as file:
         next(file)
+        i=0
         for row in file:
             row = row.rstrip()
             row = row.split(',')
@@ -29,6 +30,8 @@ def load_houses():
 
 
             year_built ,stories ,beds ,full_baths ,half_baths,livable_sqft, total_sqft = row[:7] 
+            if i % 100 == 0:
+                print('adding a house built in', year_built)
 
             garage_sqft,carport_sqft,fireplace ,pool,central_heating,central_cooling = row[7:13]
 
@@ -50,6 +53,11 @@ def load_houses():
 
             # We need to add to the session or it won't ever be stored
             db.session.add(house)
+
+
+            # import pdb; pdb.set_trace()
+            if i % 100 == 0:
+                db.session.commit()
 
         # Once we're done, we should commit our work
         db.session.commit()

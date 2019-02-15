@@ -14,11 +14,10 @@ import matplotlib.pyplot as plt
 
 # Load the cleaned data
 data = pd.read_csv("pop_cities.csv")
-print(data.columns)
 
 
 #drop columns that are not needed
-data = data.drop(columns=['Unnamed: 0', 'Unnamed: 0.1'])
+data = data.drop(columns=['Unnamed: 0', 'Unnamed: 0.1','zip_code'])
 
 ## considering to remove 'zip_code'
 
