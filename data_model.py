@@ -28,11 +28,11 @@ class House(db.Model):
     livable_sqft = db.Column(db.Integer, nullable=True)
     total_sqft = db.Column(db.Integer, nullable=True)
     garage_sqft = db.Column(db.Integer, nullable=True)
-    carport_sqft = db.Column(db.Integer, nullable=True)
-    fireplace = db.Column(db.Integer, nullable=True)    
-    pool = db.Column(db.Integer, nullable=True)   #bool
-    central_cooling = db.Column(db.Integer, nullable=True) 
-    central_heating = db.Column(db.Integer, nullable=True)    #
+    carport_sqft = db.Column(db.Boolean, nullable=True)
+    fireplace = db.Column(db.Boolean, nullable=True)    
+    pool = db.Column(db.Boolean, nullable=True)   #bool
+    central_cooling = db.Column(db.Boolean, nullable=True) 
+    central_heating = db.Column(db.Boolean, nullable=True)    #
     sale_price = db.Column(db.Integer, nullable = True )
     garage_type_detached = db.Column(db.Integer, nullable=True) 
     garage_type_attached = db.Column(db.Integer, nullable=True) 

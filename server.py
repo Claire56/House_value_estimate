@@ -31,6 +31,7 @@ def home_info():
 	
 app.route('/value')
 def home_value():
+	
 
 	return render_template('home_value.html')
 
