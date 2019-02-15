@@ -15,18 +15,30 @@
 	<form action=" /value">
 		<h3> Please Provide the following information </h3>
 
+		{% for feature in House_features %}
+		{{feature}}
+		<input type="text" name= {{feature}}>   <br/> <br/>
+		{% endfor %
+
+		{% for feature in more_features %}
+		{{feature}}
+		
+		<input type="button" name = {{feature}}>   <br/> <br/>
+		{% endfor %
+
 		{% for feature in features %}
 		{{feature}}
-		<input type="text" name="name">   <br/> <br/>
+		<input type="text" name= {{feature}}>   <br/> <br/>
 		{% endfor %}
 
-		{% for feature in boolean_features%}
-		{{feature}}
+		select city 
+		
 		<select>
-			<option value="yes">YES</option>
-            <option value="no">NO</option>
+			{% for city in cities %}
+			<option name = {{city}} > {{city}} </option>
+            {% endfor %}
 		</select>
-		{% endfor %}
+		
 		<br> <br/> <br/>
 		<input type="submit" value="Please Submit Form">
 
