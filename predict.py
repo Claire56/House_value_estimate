@@ -7,14 +7,14 @@ model = joblib.load('trained_model.pkl')
 # arrangement as our training data set.
 house_to_value = [
     # House features
-    2006,   # year_built
+    2017,   # year_built
     1,      # stories
-    4,      # num_bedrooms
-    3,      # full_bathrooms
+    2,      # num_bedrooms
+    2,      # full_bathrooms
     0,      # half_bathrooms 
-    2200,   # livable_sqft
-    2350,   # total_sqft
-    0,      # garage_sqft
+    1311,   # livable_sqft
+    1694,   # total_sqft
+    206,      # garage_sqft
     0,      # carport_sqft
     True,   # has_fireplace
     False,  # has_pool
@@ -23,16 +23,16 @@ house_to_value = [
     
     # Garage type: Choose only one
     0,      # attached
-    0,      # detached
-    1,      # none
+    1,      # detached
+    
     
     # City: Choose only one
     0,      # Amystad
-    1,      # Brownport
+    0,      # Brownport
     0,      # North Erinville
     0,      # West Ann
     0,      # Port Andrealand
-    0,      # Port Jonathanborough
+    1,      # Port Jonathanborough
     
 ]
 
@@ -47,6 +47,7 @@ homes_to_value = [
 
 # Run the model and make a prediction for each house in the homes_to_value array
 predicted_home_values = model.predict(homes_to_value)
+
 
 # Since we are only predicting the price of one house, just look at the first prediction returned
 predicted_value = predicted_home_values[0]

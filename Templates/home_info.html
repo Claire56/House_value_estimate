@@ -12,34 +12,15 @@
 
 {% block content %}
 <div class='c3'>
-	<form action=" /value">
+	<form action= "/sht_value">
 		<h3> Please Provide the following information </h3>
-
-		{% for feature in House_features %}
-		{{feature}}
-		<input type="text" name= {{feature}}>   <br/> <br/>
-		{% endfor %
-
-		{% for feature in more_features %}
-		{{feature}}
 		
-		<input type="button" name = {{feature}}>   <br/> <br/>
-		{% endfor %
-
 		{% for feature in features %}
 		{{feature}}
-		<input type="text" name= {{feature}}>   <br/> <br/>
+		<input type="number" name= {{feature}}>   <br/> <br/>
 		{% endfor %}
 
-		select city 
 		
-		<select>
-			{% for city in cities %}
-			<option name = {{city}} > {{city}} </option>
-            {% endfor %}
-		</select>
-		
-		<br> <br/> <br/>
 		<input type="submit" value="Please Submit Form">
 
 	</form>

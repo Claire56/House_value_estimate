@@ -19,6 +19,7 @@ data = pd.read_csv("pop_cities.csv")
 #drop columns that are not needed
 data = data.drop(columns=['Unnamed: 0', 'Unnamed: 0.1','zip_code'])
 
+
 ## considering to remove 'zip_code'
 
 # Replace categorical data with one-hot encoded data in the DataCleaningipnb.
@@ -27,6 +28,9 @@ data = data.drop(columns=['Unnamed: 0', 'Unnamed: 0.1','zip_code'])
 # create x and y
 X = data.drop('sale_price', axis =1 )
 y = data['sale_price']
+
+
+print(X.columns)
 
 # Create the X and y arrays
 X = X.values
@@ -51,3 +55,10 @@ model.fit(X_train, y_train)
 joblib.dump(model, 'trained_model.pkl')
 #get the score for the model
 print(model.score(X_test ,y_test))
+
+
+#helper functions
+def home_features():
+	return data.drop('sale_price', axis =1 ).columns
+
+
