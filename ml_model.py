@@ -56,6 +56,14 @@ joblib.dump(model, 'trained_model.pkl')
 #get the score for the model
 print(model.score(X_test ,y_test))
 
+# Find the error rate on the training set
+mse = mean_absolute_error(y_train, model.predict(X_train))
+print("Training Set Mean Absolute Error: %.4f" % mse)
+
+# Find the error rate on the test set
+mse = mean_absolute_error(y_test, model.predict(X_test))
+print("Test Set Mean Absolute Error: %.4f" % mse)
+
 
 #helper functions
 def home_features():
