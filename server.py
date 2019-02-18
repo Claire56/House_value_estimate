@@ -87,6 +87,7 @@ def loc_value():
 
 @app.route('/sht_value')
 def get_value():
+	# add comment
 	
 	home_features = [request.args.get(i) or 0.0 for i in features]
 
@@ -94,6 +95,7 @@ def get_value():
 
 	predicted = model.predict([home_features])
 	predicted = round(predicted[0],2)
+	predicted = "{:,}".format(predicted)
 
 	return render_template('home_value.html', predicted = predicted)
 

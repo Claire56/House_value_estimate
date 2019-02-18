@@ -1,0 +1,69 @@
+
+
+{%  extends  'base.html' %}
+
+{% block head %}
+
+<title> House information </title>
+<meta name="description" content="get information about a clients home">
+
+{% endblock %}
+
+
+{% block content %}
+<div class='c3'>
+	<form action= "/sht_value">
+		<h3> Please Provide the following information </h3>
+		
+		{% for feature in features[:8] %}
+		{{feature}}
+		<input type="number" name= {{feature}}>   <br/> <br/>
+		{% endfor %}
+
+		
+		
+
+	</form>
+	
+ 	<br/> <br/>
+	
+</div>
+<div class='c3'>
+	<form action= "/sht_value">
+		<h3> Please select all that apply </h3>
+		
+		{% for feature in features[8:14] %}
+		{{feature}}
+		<input type="number" name= {{feature}}>   <br/> <br/>
+		{% endfor %}
+
+		
+		<input type="submit" value="Please Submit Form">
+
+	</form>
+	
+ 	
+	
+</div>
+
+<br/> <br/>
+</div>
+<div class='c3'>
+	<form action= "/sht_value">
+		<h3> Please select a city </h3>
+		
+		{% for feature in features[14:] %}
+		{{feature}}
+		<input type="radio" name= {{feature}}>   <br/> <br/>
+		{% endfor %}
+
+		
+		<input type="submit" value="Please Submit Form">
+
+	</form>
+	
+ 	
+	
+</div>
+
+{% endblock %}
