@@ -13,57 +13,37 @@
 {% block content %}
 <div class='c3'>
 	<form action= "/sht_value">
-		<h3> Please Provide the following information </h3>
+		<h2> Please Provide the following infomation </h2>
+		<h3> You can type your input or scroll through </h3>
 		
-		{% for feature in features[:8] %}
-		{{feature}}
-		<input type="number" name= {{feature}}>   <br/> <br/>
+		{% for feature in features[:9] %}
+		
+		<input type="number" name= {{feature}} min="0" class="c1"> {{feature}}  <br/> <br/>
 		{% endfor %}
+		{#
+			select all that apply(this is a comment)
+			#}
 
-		
-		
-
-	</form>
-	
- 	<br/> <br/>
-	
-</div>
-<div class='c3'>
-	<form action= "/sht_value">
 		<h3> Please select all that apply </h3>
 		
-		{% for feature in features[8:14] %}
-		{{feature}}
-		<input type="number" name= {{feature}}>   <br/> <br/>
+		{% for feature in features[9:15] %}
+		
+		<input type="radio" name= {{feature}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 
+		<h3> Please select one city </h3>
 		
-		<input type="submit" value="Please Submit Form">
-
-	</form>
-	
- 	
-	
-</div>
-
-<br/> <br/>
-</div>
-<div class='c3'>
-	<form action= "/sht_value">
-		<h3> Please select a city </h3>
+		{% for feature in features[15:] %}
 		
-		{% for feature in features[14:] %}
-		{{feature}}
-		<input type="radio" name= {{feature}}>   <br/> <br/>
+		<input type="checkbox" name= {{feature}}> {{feature}}  <br/> <br/>
 		{% endfor %}
-
-		
+		<br/> <br/>
 		<input type="submit" value="Please Submit Form">
 
+
 	</form>
-	
- 	
 	
 </div>
 
 {% endblock %}
+

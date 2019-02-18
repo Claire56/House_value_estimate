@@ -87,13 +87,22 @@ def loc_value():
 
 @app.route('/sht_value')
 def get_value():
-	# add comment
+	# function used a get request to get the values of the user inputs, 
+	# use it to estimate house value and return the estimate to the user. 
 	
 	home_features = [request.args.get(i) or 0.0 for i in features]
+	print(home_features)
 
+	# change the strings recieved back to number
+	home_features = [1 if feature == 'on' else feature for feature in home_features]
+	print(home_features)
+
+	# use the trained data to estimate the value 
 	model = joblib.load('trained_model.pkl')
-
 	predicted = model.predict([home_features])
+
+
+	# format the results of the prediction
 	predicted = round(predicted[0],2)
 	predicted = "{:,}".format(predicted)
 
