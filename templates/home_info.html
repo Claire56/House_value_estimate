@@ -15,8 +15,9 @@
 	<form action= "/sht_value">
 		<h2> Please Provide the following infomation </h2>
 		<h3> You can type your input or scroll through </h3>
-		
-		{% for feature in features[:9] %}
+		<input type="number" name="{{features[0]}}" min="1850">{{features[0]}}
+		<br> <br>
+		{% for feature in features[1:9] %}
 		
 		<input type="number" name= {{feature}} min="0" class="c1"> {{feature}}  <br/> <br/>
 		{% endfor %}
@@ -38,7 +39,10 @@
 		<input type="checkbox" name= {{feature}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 		<br/> <br/>
-		<input type="submit" value="Please Submit Form">
+		<input type="submit" value="Please SUBMIT FORM">
+		<br/> <br/>
+
+		<input type="reset" value="CLEAR FORM">
 
 
 	</form>

@@ -2,11 +2,14 @@
 
 from sqlalchemy import func
 from data_model import House
+import pandas as pd
+# from delete import column_names
+
 
 
 from data_model import connect_to_db, db
 from server import app
-from datetime import datetime as dt 
+
 
 
 def load_houses():
@@ -27,29 +30,38 @@ def load_houses():
             row = row.split(',')
             row = row[2:]
 
+            # col_names = column_names()
+
+            # col_names[:13]= row[:13]
+            # col_names[13:]= row[14:]
 
 
-            year_built ,stories ,beds ,full_baths ,half_baths,livable_sqft, total_sqft = row[:7] 
+
+            year_built ,stories ,beds ,full_baths ,half_baths,livable_sqft, total_sqft = row[:7]
+
             if i % 100 == 0:
                 print('adding a house built in', year_built)
 
             garage_sqft,carport_sqft,fireplace ,pool,central_heating,central_cooling = row[7:13]
+            if i % 100 == 0:
+                print('adding ', year_built)
 
-            zipcode, sale_price, garage_type_attached, garage_type_detached, East_Lucas =row[13:18]
+            sale_price, garage_type_attached, garage_type_detached, East_Lucas =row[14:18]
+
             North_Erinville, Port_Andrealand, Port_Jonathanborough, Wendybury, West_Ann =row[18:]
 
             # import pdb; pdb.set_trace()
 
 
-            house = House(year_built=year_built ,stories=int(stories),beds= int(beds),
-                full_baths= int(full_baths) ,zipcode=zipcode ,half_baths= int(half_baths),
+            house = House(year_built=float(year_built),stories=int(stories),num_bedrooms= int(num_bedrooms),
+                full_bathrooms= int(full_bathrooms) ,half_bathrooms= int(half_bathrooms),
                 livable_sqft =int(livable_sqft),total_sqft= int(total_sqft),
-                garage_sqft=int(garage_sqft) ,carport_sqft=int(carport_sqft) ,fireplace=bool(fireplace),
-                pool=bool(pool), central_cooling = bool(central_cooling),central_heating=bool(central_heating),
+                garage_sqft=int(garage_sqft) ,carport_sqft=int(carport_sqft) ,has_fireplace=bool(has_fireplace),
+                has_pool=bool(has_pool), has_central_cooling = bool(has_central_cooling),has_central_heating=bool(has_central_heating),
                 sale_price=float(sale_price),garage_type_detached = int(garage_type_detached),
-                garage_type_attached = int(garage_type_attached), Wendybury= int(Wendybury),
-                East_Lucas=int(East_Lucas),North_Erinville=int(North_Erinville),West_Ann=int(West_Ann),
-                Port_Andrealand = int(Port_Andrealand) ,Port_Jonathanborough = int(Port_Jonathanborough))
+                garage_type_attached = int(garage_type_attached), city_Wendybury= int(city_Wendybury),
+                city_East_Lucas=int(city_East_Lucas),city_North_Erinville=int(city_North_Erinville),city_West_Ann=int(city_West_Ann),
+                city_Port_Andrealand = int(city_Port_Andrealand) ,city_Port_Jonathanborough = int(city_Port_Jonathanborough))
 
             # We need to add to the session or it won't ever be stored
             db.session.add(house)
