@@ -37,18 +37,17 @@ def load_houses():
 
 
 
-            year_built ,stories ,beds ,full_baths ,half_baths,livable_sqft, total_sqft = row[:7]
+            year_built ,stories,num_bedrooms,full_bathrooms ,half_bathrooms,livable_sqft, total_sqft = row[:7]
 
-            if i % 100 == 0:
-                print('adding a house built in', year_built)
+            
 
-            garage_sqft,carport_sqft,fireplace ,pool,central_heating,central_cooling = row[7:13]
+            garage_sqft,carport_sqft,has_fireplace,has_pool,has_central_heating,has_central_cooling = row[7:13]
             if i % 100 == 0:
                 print('adding ', year_built)
 
-            sale_price, garage_type_attached, garage_type_detached, East_Lucas =row[14:18]
+            sale_price, garage_type_attached, garage_type_detached, city_East_Lucas =row[14:18]
 
-            North_Erinville, Port_Andrealand, Port_Jonathanborough, Wendybury, West_Ann =row[18:]
+            city_North_Erinville, city_Port_Andrealand, city_Port_Jonathanborough, city_Wendybury, city_West_Ann =row[18:]
 
             # import pdb; pdb.set_trace()
 
