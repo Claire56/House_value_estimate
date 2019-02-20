@@ -53,15 +53,18 @@ def load_houses():
             # import pdb; pdb.set_trace()
 
 
-            house = House(year_built=float(year_built),stories=int(stories),num_bedrooms= int(num_bedrooms),
-                full_bathrooms= int(full_bathrooms) ,half_bathrooms= int(half_bathrooms),
-                livable_sqft =int(livable_sqft),total_sqft= int(total_sqft),
-                garage_sqft=int(garage_sqft) ,carport_sqft=int(carport_sqft) ,has_fireplace=bool(has_fireplace),
-                has_pool=bool(has_pool), has_central_cooling = bool(has_central_cooling),has_central_heating=bool(has_central_heating),
-                sale_price=float(sale_price),garage_type_detached = int(garage_type_detached),
-                garage_type_attached = int(garage_type_attached), city_Wendybury= int(city_Wendybury),
-                city_East_Lucas=int(city_East_Lucas),city_North_Erinville=int(city_North_Erinville),city_West_Ann=int(city_West_Ann),
-                city_Port_Andrealand = int(city_Port_Andrealand) ,city_Port_Jonathanborough = int(city_Port_Jonathanborough))
+            house = House(year_built=float(float(year_built)),stories=int(float(stories)),num_bedrooms= int(float(num_bedrooms)),
+                full_bathrooms= int(float(full_bathrooms)) ,half_bathrooms= int(float(half_bathrooms)),
+                livable_sqft =int(float(livable_sqft)),total_sqft= int(float(total_sqft)),
+                garage_sqft=int(float(garage_sqft)) ,carport_sqft=int(float(carport_sqft)) ,
+                has_fireplace=int(float(has_fireplace)),
+                has_pool=int(float(has_pool)), has_central_cooling = int(float(has_central_cooling)),
+                has_central_heating=int(float(has_central_heating)),
+                sale_price=float(float(sale_price),garage_type_detached = int(float(garage_type_detached),
+                garage_type_attached = int(float(garage_type_attached)), city_Wendybury= int(float(city_Wendybury)),
+                city_East_Lucas=int(float(city_East_Lucas)),city_North_Erinville=int(float(city_North_Erinville)),
+                city_West_Ann=int(float(city_West_Ann)),
+                city_Port_Andrealand = int(float(city_Port_Andrealand)) ,city_Port_Jonathanborough = int(float(city_Port_Jonathanborough)))
 
             # We need to add to the session or it won't ever be stored
             db.session.add(house)
