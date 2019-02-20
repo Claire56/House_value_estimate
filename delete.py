@@ -15,3 +15,33 @@ def x_features():
     return df.drop('sale_price', axis =1 ).columns
 
 
+
+def hash_password(password):
+	import hashlib, binascii
+	dk = hashlib.pbkdf2_hmac('sha256', password, b'claire', 100000)
+	return binascii.hexlify(dk)
+
+def registration():
+	username = request['username']
+	password = request['password']
+	hashed_password = hash_password(password)
+	store_to_db(username, hashed_password) #finnd a way to store this
+
+def login():
+	username = request['username']
+	password = request['password']
+	hashed_password = hash_password(password)
+	stored_hashed_password = get_from_db(username) # get from db is fiction too
+	if hashed_password == stored_hashed_password:
+		print('login successful')
+		session['username'] = username #better to store userid than name in the session
+	else:
+		print('login failed')
+
+def other_page():
+	username = session.get('username')
+	if not username:
+		# redirect to login
+		return request.redirect('login')
+
+	some_info = get_user_info(username)

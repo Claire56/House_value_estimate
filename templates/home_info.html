@@ -15,11 +15,11 @@
 	<form action= "/sht_value">
 		<h2> Please Provide the following infomation </h2>
 		<h3> You can type your input or scroll through </h3>
-		<input type="number" name="{{features[0]}}" min="1850">{{features[0]}}
+		<input type="number" name="{{features[0]}}" min="1850" value={{values.get(features[0])}}>{{features[0]}}
 		<br> <br>
 		{% for feature in features[1:9] %}
 		
-		<input type="number" name= {{feature}} min="0" class="c1"> {{feature}}  <br/> <br/>
+		<input type="number" name= {{feature}} min="0" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 		{#
 			select all that apply(this is a comment)

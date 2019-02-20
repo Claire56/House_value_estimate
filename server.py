@@ -1,4 +1,4 @@
-from flask import Flask ,render_template,sessions , request ,redirect
+from flask import Flask ,render_template, session, request ,redirect, make_response
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from sklearn.externals import joblib
@@ -24,7 +24,13 @@ def homepage():
 
 @app.route('/home-info')
 def home_info():
-	return render_template('home_info.html', features =features)
+	values = {}
+	for feature in features:
+		values[feature] = request.cookies.get(feature)
+
+	print("Session data: %s" % session.get('key'))
+
+	return render_template('home_info.html', features=features, values=values)
 
 
 
@@ -39,7 +45,6 @@ def loc_value():
 def get_value():
 	# function used a get request to get the values of the user inputs, 
 	# use it to estimate house value and return the estimate to the user. 
-	
 	home_features = [request.args.get(i) or 0.0 for i in features]
 	print(home_features)
 
@@ -58,7 +63,15 @@ def get_value():
 	predicted = round(predicted[0],2)
 	predicted = "{:,}".format(predicted)
 
-	return render_template('home_value.html', predicted = predicted)
+	resp = make_response(render_template('home_value.html', predicted = predicted))
+	for feature in features:
+		v = request.args.get(feature)
+		if v:
+			resp.set_cookie(feature, v)
+
+	session['key'] = request.args.get('year_built')
+
+	return resp
 
 
 
