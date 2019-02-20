@@ -65,9 +65,9 @@ def get_value():
 
 	resp = make_response(render_template('home_value.html', predicted = predicted))
 	for feature in features:
-		v = request.args.get(feature)
-		if v:
-			resp.set_cookie(feature, v)
+		feature_value = request.args.get(feature)
+		if feature_value:
+			resp.set_cookie(feature, feature_value)
 
 	session['key'] = request.args.get('year_built')
 
