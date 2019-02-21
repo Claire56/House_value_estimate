@@ -24,14 +24,17 @@
 <button id= 'pic1'>Change Picture </button>
 
 <script type="text/javascript"> 
-	const button1 = document.querySelector('#hse2');
+"use strict";
+//this is javascript code
+
+	const button1 = document.querySelector('#pic1');
 
 function picChange(){
 
-	document.querySelector('#hse2').src ='static/home2.jpeg'                                         
+    	document.querySelector('#hse2').src ='static/home2.jpeg';                                      
 }
 
-button1.addEventListener('click',picChange);
+button1.addEventListener('click' , picChange);
 
 
 </script>
