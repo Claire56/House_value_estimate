@@ -2,7 +2,7 @@ from flask import Flask ,render_template, session, request ,redirect, make_respo
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from sklearn.externals import joblib
-from delete import x_features
+from helper_functions import x_features
 
 app = Flask('__name__')
 app.jinja_env.undefined = StrictUndefined
@@ -24,11 +24,12 @@ def homepage():
 
 @app.route('/home-info')
 def home_info():
-	values = {}
+	# this function renders the information page
+	values = {} #create an empty dictionary to store cookies
 	for feature in features:
 		values[feature] = request.cookies.get(feature)
 
-	print("Session data: %s" % session.get('key'))
+	print("Session data: %s" % session.get('Year'))#work on sessions look at helper functions
 
 	return render_template('home_info.html', features=features, values=values)
 
@@ -50,6 +51,7 @@ def get_value():
 
 	# change the strings recieved back to number
 	home_features = [1 if feature == 'on' else feature for feature in home_features]
+	home_features = [0 if feature == 'None' else feature for feature in home_features]
 	print(home_features)
 
 	# use the trained data to estimate the value 
@@ -64,12 +66,14 @@ def get_value():
 	predicted = "{:,}".format(predicted)
 
 	resp = make_response(render_template('home_value.html', predicted = predicted))
-	for feature in features:
-		feature_value = request.args.get(feature)
-		if feature_value:
-			resp.set_cookie(feature, feature_value)
 
-	session['key'] = request.args.get('year_built')
+	# set cookies (giving the user previous info entered)
+	for feature in features:
+		feature_value = request.args.get(feature) #get value given by user
+		if feature_value:
+			resp.set_cookie(feature, feature_value) #set the cookie to feature value
+
+	session['Year'] = request.args.get('year_built')
 
 	return resp
 

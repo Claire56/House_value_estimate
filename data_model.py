@@ -1,7 +1,7 @@
 """Models and database functions for Ratings project."""
 
 from flask_sqlalchemy import SQLAlchemy
-from delete import column_names
+from helper_functions import column_names
 
 # This is the connection to the PostgreSQL database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -13,56 +13,55 @@ db = SQLAlchemy()
 ##############################################################################
 # Model definitions
 col_names = column_names()
-
-# class House(db.Model):
-#     """User of ratings website."""
-
-#     __tablename__ = "houses"
-
-
-#     house_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     year_built = db.Column(db.String(14), nullable=True)
-#     stories = db.Column(db.Integer, nullable=True)
-#     beds = db.Column(db.Integer, nullable=True)
-#     full_baths = db.Column(db.Integer, nullable=True)
-#     zipcode = db.Column(db.String(10), nullable=True)
-#     half_baths = db.Column(db.Integer, nullable = True )
-#     livable_sqft = db.Column(db.Integer, nullable=True)
-#     total_sqft = db.Column(db.Integer, nullable=True)
-#     garage_sqft = db.Column(db.Integer, nullable=True)
-#     carport_sqft = db.Column(db.Integer, nullable=True)
-#     fireplace = db.Column(db.Boolean, nullable=True)    
-#     pool = db.Column(db.Boolean, nullable=True)   #bool
-#     central_cooling = db.Column(db.Boolean, nullable=True) 
-#     central_heating = db.Column(db.Boolean, nullable=True)    #
-#     sale_price = db.Column(db.Integer, nullable = True )
-#     garage_type_detached = db.Column(db.Integer, nullable=True) 
-#     garage_type_attached = db.Column(db.Integer, nullable=True) 
-#     Wendybury =db.Column(db.Integer, nullable=True)
-#     East_Lucas =db.Column(db.Integer, nullable=True)
-#     North_Erinville = db.Column(db.Integer, nullable=True)
-#     Port_Andrealand =db.Column(db.Integer, nullable=True)
-#     Port_Jonathanborough =db.Column(db.Integer, nullable=False)
-#     West_Ann =db.Column(db.Integer,nullable=False)
+print(len(col_names))
 
 class House(db.Model):
+    """User of ratings website."""
 
-    __tablename__ = 'houses'
+    __tablename__ = "houses"
+
 
     house_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    year_built = db.Column(db.String(14), nullable=True)
+    stories = db.Column(db.Integer, nullable=True)
+    num_bedrooms = db.Column(db.Integer, nullable=True)
+    full_bathrooms = db.Column(db.Integer, nullable=True)
+    # zipcode = db.Column(db.String(10), nullable=True)
+    half_bathrooms = db.Column(db.Integer, nullable = True )
+    livable_sqft = db.Column(db.Integer, nullable=True)
+    total_sqft = db.Column(db.Integer, nullable=True)
+    garage_sqft = db.Column(db.Integer, nullable=True)
+    carport_sqft = db.Column(db.Integer, nullable=True)
+    has_fireplace = db.Column(db.Boolean, nullable=True)    
+    has_pool = db.Column(db.Boolean, nullable=True)   #bool
+    has_central_cooling = db.Column(db.Boolean, nullable=True) 
+    has_central_heating = db.Column(db.Boolean, nullable=True)    #
+    sale_price = db.Column(db.Integer, nullable = True )
+    garage_type_attached = db.Column(db.Integer, nullable=True) 
+    garage_type_detached = db.Column(db.Integer, nullable=True) 
+    city_East_Lucas =db.Column(db.Integer, nullable=True)
+    city_North_Erinville = db.Column(db.Integer, nullable=True)
+    city_Port_Andrealand =db.Column(db.Integer, nullable=True)
+    city_Port_Jonathanborough =db.Column(db.Integer, nullable=False)
+    city_Wendybury =db.Column(db.Integer, nullable=True)
+    city_West_Ann =db.Column(db.Integer,nullable=False)
+
+# class House(db.Model):
+
+#     __tablename__ = 'houses'
+
+#     house_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     
-
-    for name in col_names:
-        name = db.Column(db.Numeric, nullable=True)
-
-
+#     # thought the code below was cool but it didnt work
+    # for name in col_names:
+    #     name = db.Column(db.Numeric, nullable=True)
 
 
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "Year Built={}, total_sqft = {},sale_price = {} ".format(self.year_built,column_namescolumn_namesself.total_sqft,self.sale_price)
+        return f'Year: {self.year_built} T_sqft: {self.total_sqft} Price: {self.sale_price}'
 
     
  

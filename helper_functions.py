@@ -1,4 +1,5 @@
 import pandas as pd
+from flask import request, session
 
 df = pd.read_csv("pop_cities.csv")
 df = df.drop(['Unnamed: 0', 'Unnamed: 0.1','zip_code'],axis =1 )
@@ -22,8 +23,8 @@ def hash_password(password):
 	return binascii.hexlify(dk)
 
 def registration():
-	username = request['username']
-	password = request['password']
+	username = request.form.get('username')
+	password = request.form['password']
 	hashed_password = hash_password(password)
 	store_to_db(username, hashed_password) #finnd a way to store this
 
@@ -45,3 +46,5 @@ def other_page():
 		return request.redirect('login')
 
 	some_info = get_user_info(username)
+
+

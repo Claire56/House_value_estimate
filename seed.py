@@ -3,6 +3,7 @@
 from sqlalchemy import func
 from data_model import House
 import pandas as pd
+import pdb
 # from delete import column_names
 
 
@@ -52,24 +53,28 @@ def load_houses():
             # import pdb; pdb.set_trace()
 
 
-            house = House(year_built=float(float(year_built)),stories=int(float(stories)),num_bedrooms= int(float(num_bedrooms)),
+            house = House(year_built=(year_built),stories=int(float(stories)),num_bedrooms= int(float(num_bedrooms)),
                 full_bathrooms= int(float(full_bathrooms)) ,half_bathrooms= int(float(half_bathrooms)),
                 livable_sqft =int(float(livable_sqft)),total_sqft= int(float(total_sqft)),
                 garage_sqft=int(float(garage_sqft)) ,carport_sqft=int(float(carport_sqft)) ,
                 has_fireplace=int(float(has_fireplace)),
                 has_pool=int(float(has_pool)), has_central_cooling = int(float(has_central_cooling)),
                 has_central_heating=int(float(has_central_heating)),
-                sale_price=float(float(sale_price),garage_type_detached = int(float(garage_type_detached),
+                sale_price=float(float(sale_price)),garage_type_detached = int(float(garage_type_detached)),
                 garage_type_attached = int(float(garage_type_attached)), city_Wendybury= int(float(city_Wendybury)),
                 city_East_Lucas=int(float(city_East_Lucas)),city_North_Erinville=int(float(city_North_Erinville)),
                 city_West_Ann=int(float(city_West_Ann)),
                 city_Port_Andrealand = int(float(city_Port_Andrealand)) ,city_Port_Jonathanborough = int(float(city_Port_Jonathanborough)))
 
             # We need to add to the session or it won't ever be stored
+
+            # pdb.set_trace()
+
             db.session.add(house)
 
 
-            # import pdb; pdb.set_trace()
+           
+
             if i % 100 == 0:
                 db.session.commit()
 
@@ -77,20 +82,7 @@ def load_houses():
         db.session.commit()
 
 
-'''
 
-def set_val_user_id():
-    """Set value for the next house_id after seeding database"""
-
-    # Get the Max house_id in the database
-    result = db.session.query(func.max(House.house_id)).one()
-    max_id = int(result[0])
-
-    # Set the value for the next house_id to be max_id + 1
-    query = "SELECT setval('House_house_id_seq', :new_id)"
-    db.session.execute(query, {'new_id': max_id + 1})
-    db.session.commit()
-'''
 
 if __name__ == "__main__":
     connect_to_db(app)
