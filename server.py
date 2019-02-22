@@ -36,12 +36,6 @@ def home_info():
 
 
 
-@app.route('/locaton_value')
-def loc_value():
-	pass
-
-
-
 @app.route('/sht_value')
 def get_value():
 	# function used a get request to get the values of the user inputs, 
@@ -78,6 +72,16 @@ def get_value():
 	return resp
 
 
+
+@app.route('/statistics')
+def show_stats():
+	#do some coding here to produce the graphs 
+	return render_template('statistics.html')
+
+
+@app.route('/chat')
+def loc_value():
+	pass
 
 
 if __name__== "__main__":
