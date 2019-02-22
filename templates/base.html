@@ -43,10 +43,26 @@ s0.parentNode.insertBefore(s1,s0);
 <div class="topnav">
   <a class="active" href="/">Home</a>
   <a href="/statistics">Statistics </a>
-  <a href="#contact">Contact</a>
+  <a id="contact"  href="#contact">Contact</a>
   <a href="#chat">Live Chat </a>
   
 </div>
+
+<script type="text/javascript"> 
+"use strict";
+//this is javascript code
+
+    const contact = document.querySelector('#contact');
+
+function show_contact(){
+
+        alert('Contact: Claire Kim \n 863 sutter street \n San Franscisco CA 94109');                                      
+}
+
+contact.addEventListener('click' , show_contact);
+
+
+</script>
 
 	
 	{% block content %}
