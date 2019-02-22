@@ -1,5 +1,19 @@
 import pandas as pd
+import numpy as np
+import seaborn as sb
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+
+rcParams['figure.figsize'] = 6, 4
+sb.set_style('whitegrid')
+
 from flask import request, session
+
+################################################################################
 
 df = pd.read_csv("pop_cities.csv")
 df = df.drop(['Unnamed: 0', 'Unnamed: 0.1','zip_code'],axis =1 )
@@ -15,7 +29,21 @@ def x_features():
 
     return df.drop('sale_price', axis =1 ).columns
 
-
+# statistics for the visuals
+def stat_data():
+	d = df[['sale_price','num_bedrooms', 'has_fireplace','year_built']]
+	bins = np.linspace(1900,2018, num =8)  #create bins => np.linspace(min,max,numberOfBins)
+	d["Year_levels"] = pd.cut(d['year_built'],bins,labels= ['1901-1917','1918-1934','1935-1950','1951-1967','1968-1984','1985-2001','2002-2018'])#divide dataset
+	print(d.groupby("Year_levels").size())
+	return d
+d = stat_data()
+stat2=d.groupby("Year_levels").size()
+stat2 = pd.DataFrame(stat2)
+print(stat2.head())
+d.to_csv('stats1.csv')
+	
+stat_data()
+# sergey tutarial
 
 def hash_password(password):
 	import hashlib, binascii
@@ -47,4 +75,7 @@ def other_page():
 
 	some_info = get_user_info(username)
 
+stats1 = pd.read_csv('stats1.csv')
+# stats1 = stats1.drop(Unnamed: 0')
+# print(claire.columns)
 

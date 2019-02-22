@@ -1,4 +1,4 @@
-from flask import Flask ,render_template, session, request ,redirect, make_response
+from flask import Flask ,render_template, session,jsonify, request ,redirect, make_response
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from sklearn.externals import joblib
@@ -79,9 +79,41 @@ def show_stats():
 	return render_template('statistics.html')
 
 
-@app.route('/chat')
-def loc_value():
-	pass
+@app.route('/stats.json')
+def stats_data():
+    """Return data about packages popularity."""
+    d = pd.read_csv('years.csv')
+
+    data_dict = {
+    
+
+                "labels": [year for year in d['year_levels']
+                             ] ,    
+             
+                "datasets": [
+                    {
+                        "data": [v for v in d['Unnamed: 0']],
+                        "backgroundColor": [
+                            "green",
+                            "red",
+                            "#FFCE56"
+                            "green",
+                            "red",
+                            "#FFCE56",
+                            "yellow"
+                        ],
+                        "hoverBackgroundColor": [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "green",
+                            "red",
+                            "#FFCE56"
+                            "green"
+                        ]
+                    }]
+            }
+    return jsonify(data_dict)
 
 
 if __name__== "__main__":
