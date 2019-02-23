@@ -92,24 +92,29 @@ def stats():
 def stats_data():
     """Return data about packages popularity."""
     d = pd.read_csv('year.csv')
+    print(d.columns)
 
     data_dict = {
     
 
-                "labels": [year for year in d['year_levels']
-                             ] ,    
+                "labels": ['1901-1917','1918-1934','1935-1950',
+                '1951-1967','1968-1984','1985-2001','2002-2018' ]                 
+                             ,    
              
                 "datasets": [
                     {
-                        "data": [v for v in d['Unnamed: 0']],
+                        "data": [1,7,30,61,354,2531,4744],
                         "backgroundColor": [
-                            "green",
-                            "red",
+                            "orange",
+                            "pink",
                             "#FFCE56"
-                            "green",
+                            "white",
                             "red",
-                            "#FFCE56",
-                            "yellow"
+                            "yellow",
+                            "green"
+                                
+    
+
                         ],
                         "hoverBackgroundColor": [
                             "#FF6384",
@@ -118,7 +123,7 @@ def stats_data():
                             "green",
                             "red",
                             "#FFCE56"
-                            "green"
+                            "yellow"
                         ]
                     }]
             }

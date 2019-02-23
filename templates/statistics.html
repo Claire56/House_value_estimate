@@ -11,13 +11,20 @@
 
 
 {% block content %}
-
+<br><br><br>
     
-        <p>Thank you visiting </p>
-        <b> put a visial below </b> 
+        <h2 class="c1"> Thank you visiting </h2>
+        <h2 class="c1"> Number of Houses built in over years </h2> 
 
-<div id="chart1">
-</div>  
+<br><br><br>
+
+
+<div class="yearBuilt">
+    <canvas id="barChart"></canvas>
+    <div id="barLegend" class="chart-legend"></div>
+  </div>
+
+
 
 <div class="priceSqft">
     <canvas id="scatter1"></canvas>
@@ -25,9 +32,30 @@
   </div>
 
 
+
 <script type="text/javascript">
+      const options = {
+      responsive: true
+    };
 
     // Make Donut Chart of percent of different types of Melons
+    let ctx_donut = $("#barChart").get(0).getContext("2d");
+
+    $.get("/stats.json", function (data) {
+      let myBarChart = new Chart(ctx_donut, {
+                                              type: 'pie',
+                                              data: data,
+                                              options: options
+                                            });
+      $('#barLegend').html(myBarChart.generateLegend());
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+    // Make scatter plots price vs sqft
     let ctx = $("#scatter1").get(0).getContext("2d");
 
     $.get("/scatter.json", function (data) {
