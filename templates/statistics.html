@@ -15,9 +15,57 @@
     
         <p>Thank you visiting </p>
         <b> put a visial below </b> 
-    
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="static/stats.js"></script>
+
+<div id="chart1">
+</div>  
+
+<div class="priceSqft">
+    <canvas id="scatter1"></canvas>
+    <div id="scatterLegend" class="chart-legend"></div>
+  </div>
+
+
+<script type="text/javascript">
+
+    // Make Donut Chart of percent of different types of Melons
+    let ctx = $("#scatter1").get(0).getContext("2d");
+
+    $.get("/scatter.json", function (data) {
+        // data is 
+           // {'points': [{x:444, y:666}, ...]}
+
+        let listOfPoints= data.points;
+      
+
+        var scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Scatter Dataset',
+                    data: listOfPoints
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom'
+                    }]
+                }
+            }
+
+
+
+        })
+
+
+
+    });
+
+</script>
+
+
+
         
     
 

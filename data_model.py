@@ -64,7 +64,10 @@ class House(db.Model):
         return f'Year: {self.year_built} T_sqft: {self.total_sqft} Price: {self.sale_price}'
 
     
- 
+    def get_chart(self):
+
+        return {'x': self.sale_price, 'y': self.total_sqft}
+
 ##############################################################################
 # Helper functions
 

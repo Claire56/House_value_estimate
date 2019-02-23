@@ -3,6 +3,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from sklearn.externals import joblib
 from helper_functions import x_features
+import pandas as pd
+import data_model
 
 app = Flask('__name__')
 app.jinja_env.undefined = StrictUndefined
@@ -78,11 +80,18 @@ def show_stats():
 	#do some coding here to produce the graphs 
 	return render_template('statistics.html')
 
+@app.route('/my_data_handler') #madi help
+def stats():
+    #do some coding here to produce the graphs 
+    f = open('pop_cities.csv')
+    my_data = f.read()
+
+    return my_data 
 
 @app.route('/stats.json')
 def stats_data():
     """Return data about packages popularity."""
-    d = pd.read_csv('years.csv')
+    d = pd.read_csv('year.csv')
 
     data_dict = {
     
@@ -115,6 +124,21 @@ def stats_data():
             }
     return jsonify(data_dict)
 
+@app.route('/scatter.json')
+def scatter_data():
+    houses = data_model.House.query.all()
+    data =[house.get_chart() for house in houses]
+
+    # a = [ big list comp]
+
+    return jsonify(points=data)
+
+
+
+
+
+
+
 
 if __name__== "__main__":
 
@@ -125,6 +149,7 @@ if __name__== "__main__":
 
 	# Use the DebugToolbar
     DebugToolbarExtension(app)
+    data_model.connect_to_db(app)
 
 
 

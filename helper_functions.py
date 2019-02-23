@@ -36,10 +36,11 @@ def stat_data():
 	d["Year_levels"] = pd.cut(d['year_built'],bins,labels= ['1901-1917','1918-1934','1935-1950','1951-1967','1968-1984','1985-2001','2002-2018'])#divide dataset
 	print(d.groupby("Year_levels").size())
 	return d
+
 d = stat_data()
 stat2=d.groupby("Year_levels").size()
 stat2 = pd.DataFrame(stat2)
-print(stat2.head())
+stat2.to_csv('stat2.csv')
 d.to_csv('stats1.csv')
 	
 stat_data()
