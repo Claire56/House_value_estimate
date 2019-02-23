@@ -12,12 +12,27 @@
 
 
 {% block content %}
+<br>
+<br>
+<br>
 
 	
-		<p>Thank you for the information</p>
-		<b> Your House's approximate value  is  USD {{predicted }} </b> 
+		<h2 class="c1">Thank you </h2> <br>
+        <br>
+		<h1 class="c1"> Your House's approximate value  is  USD {{predicted }} </h1> 
+
+        <h3 class="c1"> below is a scatter plot showing how total square feet of a house affects price.</h3>
+
+
+
+<div class="priceSqft">
+    <canvas id="scatter1"></canvas>
+    <div id="scatterLegend" class="chart-legend"></div>
+  </div>
+
+
 	
-	
+<script src="static/sqFt.js"></script> 	
 		
 	
 

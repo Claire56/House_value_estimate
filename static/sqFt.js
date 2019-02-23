@@ -1,33 +1,7 @@
 
 
-{%  extends  'base.html' %}
 
-{% block head %}
-
-<title> House value </title>
-<meta name="statistics" content="render general statistics to client">
-
-{% endblock %}
-
-
-{% block content %}
-
-    
-        <p>Thank you visiting </p>
-        <b> put a visial below </b> 
-
-<div id="chart1">
-</div>  
-
-<div class="priceSqft">
-    <canvas id="scatter1"></canvas>
-    <div id="scatterLegend" class="chart-legend"></div>
-  </div>
-
-
-<script type="text/javascript">
-
-    // Make Donut Chart of percent of different types of Melons
+    // Make scatter plot showing relatioship between price and  sqFt
     let ctx = $("#scatter1").get(0).getContext("2d");
 
     $.get("/scatter.json", function (data) {
@@ -62,12 +36,3 @@
 
     });
 
-</script>
-
-
-
-        
-    
-
-
-{% endblock %}
