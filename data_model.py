@@ -68,6 +68,10 @@ class House(db.Model):
 
         return {'x': self.sale_price, 'y': self.total_sqft}
 
+    def get_line(self):
+
+        return {'x':self.sale_price,'y': self.num_bedrooms}
+
 ##############################################################################
 # Helper functions
 
