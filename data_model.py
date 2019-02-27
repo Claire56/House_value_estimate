@@ -2,6 +2,9 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from helper_functions import column_names
+from decimal import Decimal
+import json
+
 
 # This is the connection to the PostgreSQL database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -68,9 +71,9 @@ class House(db.Model):
 
         return {'x': self.sale_price, 'y': self.total_sqft}
 
-    def get_line(self):
+    def avg_by_beds(self):
 
-        return {'x':self.sale_price,'y': self.num_bedrooms}
+        return (self.num_bedrooms,self.sale_price )
 
 ##############################################################################
 # Helper functions
@@ -123,7 +126,12 @@ class User(db.Model):
 
         return f'Name: {self.User_name} City: {self.city}'
 
-    
+class DecimalEncoder(json.JSONEncoder):
+    ''' this class is used to help deal with persing decimal into json'''
+    def default(self, o):
+        if isinstance(o, Decimal):
+            return float(o)
+        return super(DecimalEncoder, self).default(o)    
 
 
 

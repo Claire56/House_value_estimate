@@ -29,16 +29,33 @@
 		
 		{% for feature in features[9:15] %}
 		
-		<input type="radio" name= {{feature}} value={{values.get(feature)}}> {{feature}}  <br/> <br/>
+		<input type="radio" name = {{feature}} value ={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 		<input type="reset" value="Reset Values">
 
 		<h3> Please select one city </h3>
-		
+		<br> <br>
 		{% for feature in features[15:] %}
 		
-		<input type="radio" name= {{feature}} value={{values.get(feature)}} > {{feature}}  <br/> <br/>
+		<input type="radio" name= {{feature}} class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
+
+
+
+
+
+
+
+        {#
+		
+		{% for feature in features[15:22] %}
+		
+		<input type="number" name= {{feature}} value={{values.get(feature)}} > {{feature}}  <br/> <br/>
+		{% endfor %}
+
+		#}
+
+
 		<br/> <br/>
 		<input type="submit" value="Please SUBMIT FORM">
 		<br/> <br/>

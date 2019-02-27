@@ -2,9 +2,13 @@ from flask import Flask ,render_template, session,jsonify, request ,redirect, ma
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from sklearn.externals import joblib
-from helper_functions import x_features , get_chosen_city
+from helper_functions import x_features 
+from sqlalchemy import func
 import pandas as pd
-import data_model
+import data_model as dm
+from decimal import Decimal
+import json
+
 
 app = Flask('__name__')
 app.jinja_env.undefined = StrictUndefined
@@ -56,7 +60,7 @@ def get_value():
 
     # change the strings recieved back to number
     home_features = [1 if feature == 'on' else feature for feature in home_features]
-    home_features = [0 if feature == 'None' else feature for feature in home_features]
+    home_features = [1 if feature == 'None' else feature for feature in home_features]
 
     # use the trained data to estimate the value 
     model = joblib.load('trained_model.pkl')
@@ -139,12 +143,27 @@ def stats_data():
 
 @app.route('/scatter.json')
 def scatter_data():
-    houses = data_model.House.query.all()
+    houses = dm.House.query.all()
     data =[house.get_chart() for house in houses]
 
     # a = [ big list comp]
 
     return jsonify(points=data)
+
+@app.route('/mean_price_bed.json')
+def bed_mean_data():
+
+    beds = dm.House.query.with_entities(dm.House.num_bedrooms,
+        func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).all()
+
+    data = json.dumps(beds, cls=dm.DecimalEncoder)# print(beds)
+    # data = [bed.avg_by_beds() for bed in beds]
+
+    # a = [ big list comp]
+
+    return jsonify(data)
+
+
 
 
 
@@ -157,7 +176,7 @@ if __name__== "__main__":
 
 	# Use the DebugToolbar
     DebugToolbarExtension(app)
-    data_model.connect_to_db(app)
+    dm.connect_to_db(app)
 
 
 
