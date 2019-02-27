@@ -127,7 +127,7 @@ class User(db.Model):
         return f'Name: {self.User_name} City: {self.city}'
 
 class DecimalEncoder(json.JSONEncoder):
-    ''' this class is used to help deal with persing decimal into json'''
+    ''' this class is used to help serialize numbers with decimal (json cant serialize umbers with Decimal'''
     def default(self, o):
         if isinstance(o, Decimal):
             return float(o)
