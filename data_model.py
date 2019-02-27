@@ -74,6 +74,60 @@ class House(db.Model):
 
 ##############################################################################
 # Helper functions
+class UserHome(db.Model):
+    """User of ratings website."""
+
+    __tablename__ = "UserHomes"
+
+
+    house_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id =db.Column()#foreign key
+    year_built = db.Column(db.String(14), nullable=True)
+    stories = db.Column(db.Integer, nullable=True)
+    num_bedrooms = db.Column(db.Integer, nullable=True)
+    full_bathrooms = db.Column(db.Integer, nullable=True)
+    # zipcode = db.Column(db.String(10), nullable=True)
+    half_bathrooms = db.Column(db.Integer, nullable = True )
+    livable_sqft = db.Column(db.Integer, nullable=True)
+    total_sqft = db.Column(db.Integer, nullable=True)
+    garage_sqft = db.Column(db.Integer, nullable=True)
+    carport_sqft = db.Column(db.Integer, nullable=True)
+    has_fireplace = db.Column(db.Boolean, nullable=True)    
+    has_pool = db.Column(db.Boolean, nullable=True)   #bool
+    has_central_cooling = db.Column(db.Boolean, nullable=True) 
+    has_central_heating = db.Column(db.Boolean, nullable=True)    #
+    sale_price = db.Column(db.Integer, nullable = True )
+    garage_type_attached = db.Column(db.Integer, nullable=True) 
+    garage_type_detached = db.Column(db.Integer, nullable=True) 
+    city_East_Lucas =db.Column(db.Integer, nullable=True)
+    city_North_Erinville = db.Column(db.Integer, nullable=True)
+    city_Port_Andrealand =db.Column(db.Integer, nullable=True)
+    city_Port_Jonathanborough =db.Column(db.Integer, nullable=False)
+    city_Wendybury =db.Column(db.Integer, nullable=True)
+    city_West_Ann =db.Column(db.Integer,nullable=False)
+
+class User(db.Model):
+    """User of ratings website."""
+
+    __tablename__ = "Users"
+
+
+    User_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    User_name = db.Column(db.String(54), nullable=False)
+    city = db.Column(db.String(54), nullable=False)
+
+
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return f'Name: {self.User_name} City: {self.city}'
+
+    
+
+
+
+
 
 
 def connect_to_db(app):

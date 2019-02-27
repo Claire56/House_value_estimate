@@ -34,17 +34,22 @@ def stat_data():
 	d = df[['sale_price','num_bedrooms', 'has_fireplace','year_built']]
 	bins = np.linspace(1900,2018, num =8)  #create bins => np.linspace(min,max,numberOfBins)
 	d["Year_levels"] = pd.cut(d['year_built'],bins,labels= ['1901-1917','1918-1934','1935-1950','1951-1967','1968-1984','1985-2001','2002-2018'])#divide dataset
-	print(d.groupby("Year_levels").size())
-	return d
+	return d.groupby("Year_levels").size()
 
-d = stat_data()
-stat2=d.groupby("Year_levels").size()
-stat2 = pd.DataFrame(stat2)
-stat2.to_csv('stat2.csv')
-d.to_csv('stats1.csv')
 	
-stat_data()
-# sergey tutarial
+def get_chosen_city():
+    # function used a get request to get the values of the user inputs, 
+    # use it to estimate house value and return the estimate to the user. 
+    features = x_features()
+    city = ''
+    print (features)
+    for feature in features[15:]:
+    	print(request.args.get(feature))
+    	if request.args.get(feature)== "None":
+        	print(feature)
+        	city = feature
+    return city
+
 
 def hash_password(password):
 	import hashlib, binascii
