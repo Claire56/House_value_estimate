@@ -92,13 +92,12 @@ def show_stats():
 	#do some coding here to produce the graphs 
 	return render_template('statistics.html')
 
-@app.route('/my_data_handler') #madi help
-def stats():
+@app.route('/charts') #madi help
+def charts():
     #do some coding here to produce the graphs 
-    f = open('pop_cities.csv')
-    my_data = f.read()
+    
 
-    return my_data 
+    return render_template('charts.html')
 
 @app.route('/stats.json')
 def stats_data():
