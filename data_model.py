@@ -73,7 +73,7 @@ class House(db.Model):
 
     def avg_by_beds(self):
 
-        return (self.num_bedrooms,self.sale_price )
+        return {'x' :self.num_bedrooms, 'y' : self.sale_price }
 
 ##############################################################################
 # Helper functions
