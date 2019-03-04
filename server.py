@@ -46,13 +46,20 @@ def home_info():
 def get_value():
 	# function used a get request to get the values of the user inputs, 
 	# use it to estimate house value and return the estimate to the user. 
+
+    # Show which features have been set
+    print("\n:::FORM DATA:::")
+    for f in features:
+        if f in request.args:
+            print(f, ":", request.args.get(f))
+        else:
+            print(f, ":", "(not submitted)")
+    print(":::END FORM DATA:::")
+
     home_features = [request.args.get(i) or 0.0 for i in features]
-    print(home_features)
     city =''
     for feature in features[15:]:
-        print(request.args.get(feature))
         if request.args.get(feature)== "on":
-            print(feature)
             city = feature
 
     chosen_city = city
