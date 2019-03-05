@@ -19,6 +19,7 @@ app.secret_key = "nabawanda"
 
 
 features = x_features()
+print(f'these are the {features}')
 
 
 #Add Routes
@@ -46,12 +47,22 @@ def home_info():
 def get_value():
 	# function used a get request to get the values of the user inputs, 
 	# use it to estimate house value and return the estimate to the user. 
+    # Show which features have been set
+
+    print("\n:::FORM DATA:::")
+    for f in features:
+        if f in request.args:
+            print(f, ":", request.args.get(f))
+        else:
+            print(f, ":", "(not submitted)")
+    print(":::END FORM DATA:::")
+
     home_features = [request.args.get(i) or 0.0 for i in features]
     print(home_features)
     city =''
     for feature in features[15:]:
         print(request.args.get(feature))
-        if request.args.get(feature)== "on":
+        if request.args.get(feature)== "None":
             print(feature)
             city = feature
 
@@ -123,9 +134,6 @@ def stats_data():
                             "red",
                             "yellow",
                             "green"
-                                
-    
-
                         ],
                         "hoverBackgroundColor": [
                             "#FF6384",
@@ -155,10 +163,24 @@ def bed_mean_data():
     beds = dm.House.query.with_entities(dm.House.num_bedrooms,
         func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).all()
 
-    data = json.dumps(beds, cls=dm.DecimalEncoder)# print(beds)
+    jdata = json.dumps(beds, cls=dm.DecimalEncoder)# print(beds)
     # data = [bed.avg_by_beds() for bed in beds]
+    data = json.loads(jdata)
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
 
-    # a = [ big list comp]
+    data = { "labels": x, #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": [round(i,2) for i in y],
+                        "backgroundColor": ['orange']*11
+                            
+                         }
+                    ]
+              }
+                        
+    
 
     return jsonify(data)
 

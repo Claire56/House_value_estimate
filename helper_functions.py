@@ -26,8 +26,9 @@ def column_names():
 
 def x_features():
 	 #drop the price column and return a list of remaining columns
-
-    return df.drop('sale_price', axis =1 ).columns
+     cols = df.drop('sale_price', axis =1 ).columns
+     cols = [col.replace(' ','_') for col in cols]
+     return cols
 
 # statistics for the visuals
 def stat_data():
