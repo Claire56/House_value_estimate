@@ -19,7 +19,7 @@
 		<br> <br>
 		{% for feature in features[1:9] %}
 		
-		<input type="number" name= {{feature}} min="0" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
+		<input type="number" name= "{{feature}}" min="0" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 		{#
 			select all that apply(this is a comment)
@@ -29,7 +29,7 @@
 		
 		{% for feature in features[9:15] %}
 		
-		<input type="radio" name = {{feature}} value ={{values.get(feature)}}> {{feature}}  <br/> <br/>
+		<input type="radio" name = "{{feature}}" value ={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 		<input type="reset" value="Reset Values">
 
@@ -37,20 +37,15 @@
 		<br> <br>
 		{% for feature in features[15:] %}
 		
-		<input type="checkbox" name= {{feature}} class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
+		<input type="checkbox" name= "{{feature}}" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
-
-
-
-
-
 
 
         {#
 		
 		{% for feature in features[15:22] %}
 		
-		<input type="number" name= {{feature}} value={{values.get(feature)}} > {{feature}}  <br/> <br/>
+		<input type="number" name= "{{feature}}" value={{values.get(feature)}} > {{feature}}  <br/> <br/>
 		{% endfor %}
 
 		#}

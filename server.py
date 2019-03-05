@@ -19,6 +19,8 @@ app.secret_key = "nabawanda"
 
 
 features = x_features()
+features =[f.replace('_',' ') for f in features ]
+features =[f.replace('city','') for f in features ]
 print(f'these are the {features}')
 
 
@@ -176,7 +178,7 @@ def bed_mean_data():
                         "data": [round(i,2) for i in y],
                         "backgroundColor": ['orange']*11,
                         'collectionAlias': "Budget in Thousands",
-                        'label': "Average price per num_bedrooms",
+                        'label': "Average price ",
                             
                          }
                     ]

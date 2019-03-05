@@ -13,10 +13,10 @@ window.onload = function(){
                                                       display: true,
                                                       labelString: 'Beds'
                                                     }]
-                                                    title:{
-                                                      display: true,
-                                                      text: 'Number of beds average price' 
-                                                    }
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
                                                   }
 
                                                 }
