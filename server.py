@@ -174,7 +174,9 @@ def bed_mean_data():
               "datasets" : [ 
               {
                         "data": [round(i,2) for i in y],
-                        "backgroundColor": ['orange']*11
+                        "backgroundColor": ['orange']*11,
+                        'collectionAlias': "Budget in Thousands",
+                        'label': "Average price per num_bedrooms",
                             
                          }
                     ]

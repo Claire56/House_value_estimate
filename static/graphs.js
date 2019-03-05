@@ -13,6 +13,10 @@ window.onload = function(){
                                                       display: true,
                                                       labelString: 'Beds'
                                                     }]
+                                                    title:{
+                                                      display: true,
+                                                      text: 'Number of beds average price' 
+                                                    }
                                                   }
 
                                                 }
@@ -24,13 +28,3 @@ window.onload = function(){
 }
 
 
-options = {
-  scales: {
-    yAxes: [{
-      scaleLabel: {
-        display: true,
-        labelString: 'probability'
-      }
-    }]
-  }     
-}
