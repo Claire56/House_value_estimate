@@ -30,6 +30,15 @@ def homepage():
 
 	return render_template('homepage.html')
 
+@app.route('/login')
+def login():
+    #do some coding here to produce the graphs 
+    return render_template('login.html')
+@app.route('/loginfo')
+def loginfo():
+    #do some coding here to produce the graphs 
+    return render_template('loginfo.html')
+
 
 @app.route('/home-info')
 def home_info():
