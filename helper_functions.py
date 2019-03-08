@@ -14,25 +14,35 @@ sb.set_style('whitegrid')
 from flask import request, session
 
 ################################################################################
+ds = pd.read_csv("pop_cities.csv")
+ds = ds.drop(['Unnamed: 0', 'Unnamed: 0.1','zip_code'],axis =1 )
+best5_df = pd.read_csv('best_five_zipcodes.csv')
+kim=best5_df[['sale_price', 'garage_type']].groupby('garage_type').mean()
+kim.reset_index()
+print(kim)
 
-df = pd.read_csv("pop_cities.csv")
-df = df.drop(['Unnamed: 0', 'Unnamed: 0.1','zip_code'],axis =1 )
+def best5():
+    e = best5_df.drop(columns = ['Unnamed: 0'])
+    return e 
+
+def df():
+    d = ds
+    return d
 
 def column_names():
 	# takes in nothing and returns a list of column names
-    
-    cols = df.columns.tolist() #make list 
+    cols = ds.columns #make list 
     return cols
 
 def x_features():
 	 #drop the price column and return a list of remaining columns
-     cols = df.drop('sale_price', axis =1 ).columns
+     cols = ds.drop('sale_price', axis =1 ).columns
      cols = [col.replace(' ','_') for col in cols]
      return cols
 
 # statistics for the visuals
 def stat_data():
-	d = df[['sale_price','num_bedrooms', 'has_fireplace','year_built']]
+	d = ds[['sale_price','num_bedrooms', 'has_fireplace','year_built']]
 	bins = np.linspace(1900,2018, num =8)  #create bins => np.linspace(min,max,numberOfBins)
 	d["Year_levels"] = pd.cut(d['year_built'],bins,labels= ['1901-1917','1918-1934','1935-1950','1951-1967','1968-1984','1985-2001','2002-2018'])#divide dataset
 	return d.groupby("Year_levels").size()
@@ -82,7 +92,8 @@ def other_page():
 
 	some_info = get_user_info(username)
 
-stats1 = pd.read_csv('stats1.csv')
+
+# stats1 = pd.read_csv('stats1.csv')
 # stats1 = stats1.drop(Unnamed: 0')
 # print(claire.columns)
 

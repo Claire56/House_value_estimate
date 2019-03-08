@@ -7,8 +7,9 @@ from sklearn import ensemble
 from sklearn.metrics import mean_absolute_error
 from sklearn.externals import joblib
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from data_model import House
+from sklearn.model_selection import train_test_split,GridSearchCV
+# from data_model import House
+from helper_functions import df
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.inspection import inspect
@@ -16,14 +17,46 @@ from sqlalchemy.inspection import inspect
 
 db = SQLAlchemy()
 
+def Gsmodel():
+    data = df()
+    X = data.drop('sale_price', axis =1 ).values
+    y = data['sale_price'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y,
+     test_size=0.2, random_state=0)
+
+    gsmodel = ensemble.GradientBoostingRegressor()
+
+    param_grid = {'n_estimators':[1000,500,300,200],
+        'learning_rate': [0.1,0.08,0.5,0.02],
+        'max_depth':[6,4,2],
+        'min_samples_leaf': [9,3,5,16],
+        'max_features':[0.1,1, 0.3],
+        'loss':['huber','ls','lad'],
+        'random_state':[0,2,5]
+    }
+
+    gs_cv = GridSearchCV(gsmodel,param_grid,n_jobs =4)
+
+    gs_cv.fit(X_train, y_train)
+    # print(gs_cv.best_params)
+
+    # Find the error rate on the training set
+    mse = mean_absolute_error(y_train, gs_cv.predict(X_train))
+    print("GS -Training Set Mean Absolute Error: %.4f" % mse)
+
+    # Find the error rate on the test set
+    mse = mean_absolute_error(y_test, gs_cv.predict(X_test))
+    print("GS -Test Set Mean Absolute Error: %.4f" % mse)
+    
+
 
 def modeling(house_table):
     # Load the cleaned data
-    # data = pd.read_csv("pop_cities.csv")
-    data = House.query().all()
-    data = db.session.query(House).all()
-    df = pd.DataFrame([(d.candid, d.rank, d.user_id) for d in data], 
-                  columns=['candid', 'rank', 'user_id'])
+    data = df()
+    # data = House.query().all()
+    # data = db.session.query(House).all()
+    # df = pd.DataFrame([(d.candid, d.rank, d.user_id) for d in data], 
+    #               columns=['candid', 'rank', 'user_id'])
 
     # Replace categorical data with one-hot encoded data in the DataCleaningipnb.
     #data = pd.get_dummies(data, columns=['garage_type', 'city'])
@@ -70,29 +103,12 @@ def modeling(house_table):
 
 
 #helper functions
-def home_features():
-	return data.drop('sale_price', axis =1 ).columns
+
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
-     from server import app
+     # from server import app
+     Gsmodel()
 
 
 
-
-     rough 
-     class LPRRank(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    candid = db.Column(db.String(40), index=True, unique=False)
-    rank = db.Column(db.Integer, index=True, unique=False) 
-    user_id = db.Column(db.Integer, db.ForeignKey('lprvote.id'))
-
-    def __init__(self, candid=None, rank=None, user_id=None):
-        self.data = (candid, rank, user_id)
-
-    def __repr__(self):
-        return (self.candid, self.rank, self.user_id) 
-
-data = db.session.query(LPRRank).all()
-df = pd.DataFrame([(d.candid, d.rank, d.user_id) for d in data], 
-                  columns=['candid', 'rank', 'user_id'])

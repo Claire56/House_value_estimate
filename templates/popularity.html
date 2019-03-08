@@ -1,0 +1,258 @@
+{%  extends  'base.html' %}
+
+{% block head %}
+
+<title> My homepage </title>
+<meta name="description" content="Home page">
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class='c1'>  coming soon !!! </h1>
+
+<!--the beds canvas -->
+<div class="bars">
+    <canvas id="popbeds"></canvas>
+    <div id="popbedLegend" class="chart-legend"></div>
+</div>
+
+ <!-- the baths canvas -->
+
+ <!-- the garage canvas -->
+ <!-- the swimming pool canvas -->
+ <!-- the yearbuilt canvas -->
+
+<!-- calling the bed graph chart -->
+<script type="text/javascript">
+    let popbedBar = $("#popbeds").get(0).getContext("2d");
+
+      $.get("/popbed.json", function (data) {
+        
+        let mypopBedChart = new Chart(popbedBar, {
+                                                type: 'bar',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Beds'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#popbedLegend').html(mypopBedChart.generateLegend());
+      });
+
+</script>
+
+
+<div class="pie">
+    <canvas id="popGrg"></canvas>
+    <div id="popGrgLegend" class="chart-legend"></div>
+</div>
+
+
+<!-- The year built code  -->
+
+<script type="text/javascript">
+    let popgrgBar = $("#popGrg").get(0).getContext("2d");
+
+      $.get("/grg.json", function (data) {
+        
+        let mypopGrgChart = new Chart(popgrgBar, {
+                                                type: 'pie',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Garage'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#popgrgLegend').html(mypopGrgChart.generateLegend());
+      });
+
+</script>
+
+
+
+
+
+
+
+
+<div class="bar">
+    <canvas id="yearbuilt"></canvas>
+    <div id="yearLegend" class="chart-legend"></div>
+</div>
+
+
+<!-- The year built code  -->
+
+<script type="text/javascript">
+    let yearBar = $("#yearbuilt").get(0).getContext("2d");
+
+      $.get("/stats.json", function (data) {
+        
+        let myYearChart = new Chart(yearBar, {
+                                                type: 'bar',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Years'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#yearLegend').html(myYearChart.generateLegend());
+      });
+
+</script>
+
+
+<div class="pie">
+    <canvas id="poppool"></canvas>
+    <div id="poppoolLegend" class="chart-legend"></div>
+</div>
+
+
+<!-- The has pool code  -->
+
+<script type="text/javascript">
+    let poppoolBar = $("#poppool").get(0).getContext("2d");
+
+      $.get("/poppool.json", function (data) {
+        
+        let mypopPoolChart = new Chart(poppoolBar, {
+                                                type: 'pie',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'pools'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#poppoolLegend').html(mypopPoolChart.generateLegend());
+      });
+
+</script>
+
+<div class="pie">
+    <canvas id="popfire"></canvas>
+    <div id="popfireLegend" class="chart-legend"></div>
+</div>
+
+
+<!-- The has fireplace code  -->
+<script type="text/javascript">
+    let fireBar = $("#popfire").get(0).getContext("2d");
+
+      $.get("/has_fireplace.json", function (data) {
+        
+        let mypopFireChart = new Chart(popfireBar, {
+                                                type: 'pie',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'fireplaces'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#popfireLegend').html(mypopFireChart.generateLegend());
+      });
+
+</script>
+
+<div class="bar">
+    <canvas id="popbaths"></canvas>
+    <div id="popbathLegend" class="chart-legend"></div>
+</div>
+
+
+<!-- The has pool code  -->
+<script type="text/javascript">
+
+    let popbathBar = $("#popbaths").get(0).getContext("2d");
+
+      $.get("/popbaths.json", function (data) {
+        
+        let myBathChart = new Chart(popbathBar, {
+                                                type: 'bar',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Bath rooms'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#popbathLegend').html(mypopbathChart.generateLegend());
+      });
+
+</script>
+
+<!-- The has pool code  -->
+
+
+
+
+
+<script type="text/javascript" src="static/graphs.js"></script>
+
+{% endblock %}
