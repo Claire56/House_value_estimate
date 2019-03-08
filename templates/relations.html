@@ -58,25 +58,48 @@
 
 
 
-
 <script type="text/javascript">
-      const options = {
-      responsive: true
-    };
 
-    // Make Donut Chart of percent of different types of Melons
-    let ctx_donut = $("#barChart").get(0).getContext("2d");
+    // Make scatter plots price vs sqft
+    let relbaths = $("#relbaths").get(0).getContext("2d");
 
-    $.get("/stats.json", function (data) {
-      let myBarChart = new Chart(ctx_donut, {
-                                              type: 'pie',
-                                              data: data,
-                                              options: options
-                                            });
-      $('#barLegend').html(myBarChart.generateLegend());
+    $.get("/relbaths.json", function (data) {
+
+        let plot = data.plot;
+      
+
+        var myrelBathsChart = new Chart(relbaths, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Average Price of number of  bathrooms',
+                    data: plot
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom'
+                    }]
+                }
+            }
+
+
+
+        })
+
+
+
     });
 
 </script>
+
+
+
+
+
+
 
 
 <script type="text/javascript">

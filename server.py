@@ -74,7 +74,9 @@ def get_value():
             city = feature
 
     chosen_city = city
-    print(chosen_city)
+    graph_city = 'city'+chosen_city.replace(' ',"_")
+    session['city'] = graph_city
+    print(graph_city)
 
     # change the strings recieved back to number
     home_features = [1 if feature == 'on' else feature for feature in home_features]
@@ -100,6 +102,7 @@ def get_value():
     		resp.set_cookie(feature, feature_value) #set the cookie to feature value
 
     session['Year'] = request.args.get('year_built')
+    
 
     return resp
 
@@ -333,6 +336,7 @@ def popbed_data():
                     ]
               }          
     return jsonify(data)
+  
 
 @app.route('/poppool.json')
 def poppool_data():
@@ -470,17 +474,108 @@ def relb_data():
 @app.route('/relbaths.json')
 def relbaths_data():
     rbaths = dm.House.query.with_entities(dm.House.full_bathrooms ,
-        func.count(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
+        func.avg(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
 
     jdata = json.dumps(rbaths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
     
     data = json.loads(jdata) #send data back to json
-    data =[baths.get_baths() for baths in rbaths]
+    x = [i[0] for i in data]
+    y = [round(i[1],2) for i in data]
+
+    data = list(zip(x, y)) 
+    # data= [dict(i) for i in data]
+    print(data)
+    print('################################')
+    
+
+    return jsonify(plot= data)  
 
 
-    # a = [ big list comp]
+#Individual graphs
 
-    return jsonify(points=data)  
+@app.route('/idbed.json')
+def myidbed_data():
+
+    graph_city = session.get('city')
+
+    beds = dm.House.query.with_entities(dm.House.num_bedrooms,
+        func.count(dm.House.sale_price)).filter_by(dm.House.city_East_Lucas == 1).group_by(dm.House.num_bedrooms).order_by(dm.House.num_bedrooms).all()
+    print(beds)
+    jdata = json.dumps(beds, cls=dm.DecimalEncoder)# print(beds)
+    # data = [bed.avg_by_beds() for bed in beds]
+    data = json.loads(jdata)
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
+
+    data = { "labels": x, #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": y,
+                        "backgroundColor": ['purple']*11,
+                        'collectionAlias': "Beds Count",
+                        'label': "popularity of bedrooms ",
+                            
+                         }
+                    ]
+              }          
+    return jsonify(data)   
+
+@app.route('/idrelbaths.json')#relation btwn beds and average price
+def idrelbaths_data():
+    rbaths = dm.House.query.with_entities(dm.House.full_bathrooms ,
+        func.avg(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
+
+    jdata = json.dumps(rbaths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    x = [i[0] for i in data]
+    y = [round(i[1],2) for i in data]
+
+    data = list(zip(x, y)) 
+    # data= [dict(i) for i in data]
+    print(data)
+    print('################################')
+    
+
+    return jsonify(plot= data)  
+
+
+@app.route('/idbaths.json')
+def idbaths_data():
+
+    baths = dm.House.query.with_entities(dm.House.num_bedrooms ,
+        func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).all()
+
+    jdata = json.dumps(baths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    print(data) # data is a list of lists
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
+
+    data = { "labels": x, #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": [round(i,2) for i in y],
+                        "backgroundColor": ['red','green'],
+                        'collectionAlias': "Average Price ",
+                        'label': "Average price per No of bathrooms ",
+                            
+                         }
+                    ]
+              }          
+    return jsonify(data)
+
+
+
+@app.route('/idsqft.json')
+def idscatter_data():
+    houses = dm.House.query.all()
+    data =[house.get_chart() for house in houses]
+
+
 
 
 if __name__== "__main__":
