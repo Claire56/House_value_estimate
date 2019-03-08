@@ -55,7 +55,7 @@
 </script>
 
 
-<div class="pie">
+<div class="bardoughnut">
     <canvas id="popGrg"></canvas>
     <div id="popGrgLegend" class="chart-legend"></div>
 </div>
@@ -66,10 +66,10 @@
 <script type="text/javascript">
     let popgrgBar = $("#popGrg").get(0).getContext("2d");
 
-      $.get("/grg.json", function (data) {
+      $.get("/popgrg.json", function (data) {
         
         let mypopGrgChart = new Chart(popgrgBar, {
-                                                type: 'pie',
+                                                type: 'doughnut',
                                                 data: data,
                                                 options: {
                                                   scales:{
@@ -182,9 +182,9 @@
 
 <!-- The has fireplace code  -->
 <script type="text/javascript">
-    let fireBar = $("#popfire").get(0).getContext("2d");
+    let popfireBar = $("#popfire").get(0).getContext("2d");
 
-      $.get("/has_fireplace.json", function (data) {
+      $.get("/popfireplace.json", function (data) {
         
         let mypopFireChart = new Chart(popfireBar, {
                                                 type: 'pie',

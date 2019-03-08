@@ -17,7 +17,7 @@ from flask import request, session
 ds = pd.read_csv("pop_cities.csv")
 ds = ds.drop(['Unnamed: 0', 'Unnamed: 0.1','zip_code'],axis =1 )
 best5_df = pd.read_csv('best_five_zipcodes.csv')
-kim=best5_df[['sale_price', 'garage_type']].groupby('garage_type').mean()
+kim=best5_df[['sale_price', 'garage_type']].groupby('garage_type').count()
 kim.reset_index()
 print(kim)
 

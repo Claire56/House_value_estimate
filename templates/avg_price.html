@@ -74,7 +74,7 @@
       $.get("/grg.json", function (data) {
         
         let myGrgChart = new Chart(grgBar, {
-                                                type: 'pie',
+                                                type: 'doughnut',
                                                 data: data,
                                                 options: {
                                                   scales:{

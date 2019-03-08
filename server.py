@@ -239,7 +239,7 @@ def pool_mean_data():
     x = [i[0] for i in data]
     y = [i[1] for i in data]
 
-    data = { "labels": x, #"data": [round(i,2) for i in y]}
+    data = { "labels": ['None','Swimming Pool'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
@@ -266,7 +266,7 @@ def fireplace_data():
     x = [i[0] for i in data]
     y = [i[1] for i in data]
 
-    data = { "labels": x, #"data": [round(i,2) for i in y]}
+    data = { "labels": ['None','Fireplace'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
@@ -347,13 +347,13 @@ def poppool_data():
     x = [i[0] for i in data]
     y = [i[1] for i in data]
 
-    data = { "labels": x, #"data": [round(i,2) for i in y]}
+    data = { "labels": ['None','Swimming Pool'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
                         "data": [i for i in y],
                         "backgroundColor": ['red','green'],
-                        'collectionAlias': "Average Price",
+                        'collectionAlias': "pool",
                         'label': "Popularity of pool ",
                             
                          }
@@ -365,16 +365,16 @@ def poppool_data():
 def popgrg_data():
 
     data = best5()
-    data = data[['garage_type', 'sale_price']].groupby('garage_type').size()
+    data = data.groupby('garage_type').count()
 
     jdata = data.to_json() #this can jsonify a dataframe but dont need it 
 
-    data = { "labels": ['Attached','Detached','None'], #"data": [round(i,2) for i in y]}
+    data = { "labels": ['garage attached','Detached','None'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
                         "data": [i for i in data.sale_price],
-                        "backgroundColor": ['yellow', 'blue','red'],
+                        "backgroundColor": ['green', 'yellow','red'],
                         'collectionAlias': "Average Price",
                         'label': "Average price per garage type ",
                             
@@ -384,6 +384,103 @@ def popgrg_data():
 
     return jsonify(data)
 
+@app.route('/popfireplace.json')
+def popfireplace_data():
+
+    fireplace = dm.House.query.with_entities(dm.House.has_fireplace,
+        func.count(dm.House.sale_price)).group_by(dm.House.has_fireplace).all()
+
+    jdata = json.dumps(fireplace, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    print(data) # data is a list of lists
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
+
+    data = { "labels": ['None','Fireplace'], #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": y,
+                        "backgroundColor": ['red','green'],
+                        'collectionAlias': "Fireplace ",
+                        'label': "Fireplace count ",
+                            
+                         }
+                    ]
+              }          
+    return jsonify(data)
+
+@app.route('/popbaths.json')
+def popbaths_data():
+
+    baths = dm.House.query.with_entities(dm.House.full_bathrooms ,
+        func.count(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
+
+    jdata = json.dumps(baths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    print(data) # data is a list of lists
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
+
+    data = { "labels": x, #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": [i for i in y],
+                        "backgroundColor": ['red','green'],
+                        'collectionAlias': "Average Price ",
+                        'label': "popularity of full bathrooms ",
+                            
+                         }
+                    ]
+              }          
+    return jsonify(data)   
+
+
+#scatter plots
+@app.route('/relb.json')
+def relb_data():
+
+    baths = dm.House.query.with_entities(dm.House.full_bathrooms ,
+        func.count(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
+
+    jdata = json.dumps(baths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    print(data) # data is a list of lists
+    x = [i[0] for i in data]
+    y = [i[1] for i in data]
+
+    data = { "labels": x, #"data": [round(i,2) for i in y]}
+
+              "datasets" : [ 
+              {
+                        "data": [i for i in y],
+                        "backgroundColor": ['red','green'],
+                        'collectionAlias': "Average Price ",
+                        'label': "popularity of full bathrooms ",
+                            
+                         }
+                    ]
+              }          
+    return jsonify(data) 
+
+@app.route('/relbaths.json')
+def relbaths_data():
+    rbaths = dm.House.query.with_entities(dm.House.full_bathrooms ,
+        func.count(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
+
+    jdata = json.dumps(rbaths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
+    
+    data = json.loads(jdata) #send data back to json
+    data =[baths.get_baths() for baths in rbaths]
+
+
+    # a = [ big list comp]
+
+    return jsonify(points=data)  
 
 
 if __name__== "__main__":

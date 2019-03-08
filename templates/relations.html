@@ -2,17 +2,126 @@
 
 {% block head %}
 
-<title> My homepage </title>
-<meta name="description" content="Home page">
+<title> relations page </title>
+<meta name="description" content="relationships of variables with price">
 
 {% endblock %}
 
 
 {% block content %}
+<br><br><br>
+    
+        <h2 class="c1"> Thank you visiting </h2>
+        <h2 class="c1"> Number of Houses built in over years </h2> 
+
+<br><br><br>
 
 
-<h1 class='c1'> Charts coming soon !!! </h1>
+<div class="baths">
+    <canvas id="relbaths"></canvas>
+    <div id="relbathLegend" class="chart-legend"></div>
+  </div>
 
-<script type="text/javascript" src="static/graphs.js"></script>
+
+
+<div class="priceSqft">
+    <canvas id="scatter1"></canvas>
+    <div id="scatterLegend" class="chart-legend"></div>
+  </div>
+
+<div class="bed">
+    <canvas id="relbed"></canvas>
+    <div id="relbedLegend" class="chart-legend"></div>
+  </div>
+
+
+
+
+<script type="text/javascript">
+
+  let relbedChart = $("#relbed").get(0).getContext("2d");
+
+    $.get("/relbeds.json", function (data) {
+      let myrelbedChart = new Chart(relbedChart, {
+                                              type: 'scatter',
+                                              data: data,
+                                              options:{
+                                              }
+                                            });
+      $('#relbedLegend').html(myrelbedChart.generateLegend());
+    });
+
+
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+      const options = {
+      responsive: true
+    };
+
+    // Make Donut Chart of percent of different types of Melons
+    let ctx_donut = $("#barChart").get(0).getContext("2d");
+
+    $.get("/stats.json", function (data) {
+      let myBarChart = new Chart(ctx_donut, {
+                                              type: 'pie',
+                                              data: data,
+                                              options: options
+                                            });
+      $('#barLegend').html(myBarChart.generateLegend());
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+    // Make scatter plots price vs sqft
+    let ctx = $("#scatter1").get(0).getContext("2d");
+
+    $.get("/scatter.json", function (data) {
+        // data is 
+           // {'points': [{x:444, y:666}, ...]}
+
+        let listOfPoints= data.points;
+      
+
+        var scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Scatter Plot showing the relationship between Price and total sqft Dataset',
+                    data: listOfPoints
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom'
+                    }]
+                }
+            }
+
+
+
+        })
+
+
+
+    });
+
+</script>
+
+
+
+        
+    
+
 
 {% endblock %}

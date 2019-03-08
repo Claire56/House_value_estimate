@@ -71,6 +71,20 @@ class House(db.Model):
 
         return {'x': self.sale_price, 'y': self.total_sqft}
 
+    def get_beds(self):
+
+        return {'x': self.sale_price, 'y': self.num_bedrooms}
+
+    def get_baths(self):
+
+        return {'x': self.sale_price, 'y': self.full_bathrooms}
+
+    def get_stories(self):
+
+        return {'x': self.sale_price, 'y': self.stories}
+    
+
+
     def avg_by_beds(self):
 
         return {'x' :self.num_bedrooms, 'y' : self.sale_price }
