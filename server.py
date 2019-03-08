@@ -145,7 +145,7 @@ def grg_data():
               "datasets" : [ 
               {
                         "data": [round(i,2) for i in data.sale_price],
-                        "backgroundColor": ['yellow', 'blue','red'],
+                        "backgroundColor": ['pink', 'yellow','grey'],
                         'collectionAlias': "Average Price",
                         'label': "Average price per garage type ",
                             
@@ -221,7 +221,7 @@ def bed_mean_data():
               "datasets" : [ 
               {
                         "data": [round(i,2) for i in y],
-                        "backgroundColor": ['orange']*11,
+                        "backgroundColor": ['purple']*11,
                         'collectionAlias': "Average Price",
                         'label': "Average price per No of bedrooms ",
                             
@@ -288,7 +288,7 @@ def fireplace_data():
 def baths_data():
 
     baths = dm.House.query.with_entities(dm.House.num_bedrooms ,
-        func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).all()
+        func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).order_by(dm.House.num_bedrooms).all()
 
     jdata = json.dumps(baths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
     
@@ -302,7 +302,7 @@ def baths_data():
               "datasets" : [ 
               {
                         "data": [round(i,2) for i in y],
-                        "backgroundColor": ['red','green'],
+                        "backgroundColor": ['blue']*11,
                         'collectionAlias': "Average Price ",
                         'label': "Average price per No of bathrooms ",
                             

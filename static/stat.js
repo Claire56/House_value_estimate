@@ -1,75 +1,243 @@
 
 
-const svg = d3.select('#chart1')
-      .append('svg')
-      .attr('width', '800px')
-      .attr('height', '300px');
+    let bedBar = $("#beds").get(0).getContext("2d");
+
+      $.get("/mean_price_bed.json", function (data) {
+        
+        let myBedChart = new Chart(bedBar, {
+                                                type: 'bar',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Beds'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
 
 
-d3.csv('/my_data_handler').then(function(data){
- console.log(data);
-
-let ymin = d3.min(data, function(d){
-    return d.total_sqft;});
-
-let ymax = d3.max(data, function(d){
-    return d.total_sqft;});
-
-let xmin = d3.min(data, function(d){
-     return d.sale_price;});
-let xmax = d3.max(data, function(d){
-     return d.sale_price;
-});
-console.log(ymin);
-console.log(ymax);
-
-console.log(xmin);
-console.log(xmax);
-// make the scales
-xScale = d3.scaleLinear()
-        .domain([xmin,xmax])
-        .range([10,790]);
+                                              });
+        $('#bedLegend').html(myBedChart.generateLegend());
+      });
 
 
 
-yScale = d3.scaleLinear()
-         .domain([ymin,ymax])
-         .range([10,299]);
-
-scatter = svg.selectAll('.house')
-         .data(data)
-         .enter()
-         .append('circle')
-         .attr('class', 'house') //set class
-         .attr('cx', function(d){
-          return xScale(d.sale_price);})
-         .attr('cy', function(d){
-          return yScale(d.total_sqft);})
-         .attr('r','5')
-         .attr('fill', 'blue');
-//adding the x and y axis
-
-xAxis = d3.axisBottom(xScale)
-                    .tickValues([50000, xmax]);
-yAxis = d3.axisLeft(yScale)
-                    .tickValues([ymin,ymax]);
-
-        // Add the x and y axis to the svg element and assign them a class
-        xAxisG = svg.append('g')
-                    .attr('id', 'xAxis')
-                    .attr('class', 'axis');
-        yAxisG = svg.append('g')
-                    .attr('id', 'yAxis')
-                    .attr('class', 'axis');
-        // Put the x and y axis on the screen
-        xAxisG.call(xAxis)
-                .attr('transform', 'translate(0,' + (height-margin)+ ')') // First number is x axis move, second number is y axis move
-                ;
-        yAxisG.call(yAxis)
-                .attr('transform', 'translate(30,0)') // First number is x axis move, second number is y axis move
-                ;
 
 
-});
-  
+    let bathBar = $("#baths").get(0).getContext("2d");
 
+      $.get("/baths.json", function (data) {
+        
+        let myBathChart = new Chart(bathBar, {
+                                                type: 'bar',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Bath rooms'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#bathLegend').html(mybathChart.generateLegend());
+      });
+
+
+// Make scatter plot showing relatioship between price and  sqFt
+    let ctx = $("#scatter1").get(0).getContext("2d");
+
+    $.get("/scatter.json", function (data) {
+        // data is 
+           // {'points': [{x:444, y:666}, ...]}
+
+        let listOfPoints= data.points;
+      
+
+        var scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Scatter Plot showing the relationship between Price and total sqft Dataset',
+                    data: listOfPoints
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom'
+                    }]
+                }
+            }
+
+
+
+        })
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+    let grgBar = $("#garage").get(0).getContext("2d");
+
+      $.get("/grg.json", function (data) {
+        
+        let myGrgChart = new Chart(grgBar, {
+                                                type: 'doughnut',
+                                                data: data,
+                                                options: {
+                                                  scales:{
+                                                    xAxes:[{
+                                                      display: true,
+                                                      labelString: 'Garage'
+                                                    }]
+                                                    // title:{
+                                                    //   display: true,
+                                                    //   text: 'Number of beds average price' 
+                                                    // }
+                                                  }
+
+                                                }
+
+
+                                              });
+        $('#grgLegend').html(myGrgChart.generateLegend());
+      });
+
+
+    // let yearBar = $("#yearbuilt").get(0).getContext("2d");
+
+    //   $.get("/stats.json", function (data) {
+        
+    //     let myYearChart = new Chart(yearBar, {
+    //                                             type: 'bar',
+    //                                             data: data,
+    //                                             options: {
+    //                                               scales:{
+    //                                                 xAxes:[{
+    //                                                   display: true,
+    //                                                   labelString: 'Years'
+    //                                                 }]
+    //                                                 // title:{
+    //                                                 //   display: true,
+    //                                                 //   text: 'Number of beds average price' 
+    //                                                 // }
+    //                                               }
+
+    //                                             }
+
+
+    //                                           });
+    //     $('#yearLegend').html(myYearChart.generateLegend());
+    //   });
+
+
+
+
+
+    // let poolBar = $("#pool").get(0).getContext("2d");
+
+    //   $.get("/pool.json", function (data) {
+        
+    //     let myPoolChart = new Chart(poolBar, {
+    //                                             type: 'pie',
+    //                                             data: data,
+    //                                             options: {
+    //                                               scales:{
+    //                                                 xAxes:[{
+    //                                                   display: true,
+    //                                                   labelString: 'pools'
+    //                                                 }]
+    //                                                 // title:{
+    //                                                 //   display: true,
+    //                                                 //   text: 'Number of beds average price' 
+    //                                                 // }
+    //                                               }
+
+    //                                             }
+
+
+    //                                           });
+    //     $('#poolLegend').html(myPoolChart.generateLegend());
+    //   });
+
+
+    // let fireBar = $("#fire").get(0).getContext("2d");
+
+    //   $.get("/has_fireplace.json", function (data) {
+        
+    //     let myFireChart = new Chart(fireBar, {
+    //                                             type: 'pie',
+    //                                             data: data,
+    //                                             options: {
+    //                                               scales:{
+    //                                                 xAxes:[{
+    //                                                   display: true,
+    //                                                   labelString: 'fireplaces'
+    //                                                 }]
+    //                                                 // title:{
+    //                                                 //   display: true,
+    //                                                 //   text: 'Number of beds average price' 
+    //                                                 // }
+    //                                               }
+
+    //                                             }
+
+
+    //                                           });
+    //     $('#fireLegend').html(myFireChart.generateLegend());
+    //   });
+
+
+
+    // let bathBar = $("#baths").get(0).getContext("2d");
+
+    //   $.get("/baths.json", function (data) {
+        
+    //     let myBathChart = new Chart(bathBar, {
+    //                                             type: 'bar',
+    //                                             data: data,
+    //                                             options: {
+    //                                               scales:{
+    //                                                 xAxes:[{
+    //                                                   display: true,
+    //                                                   labelString: 'Bath rooms'
+    //                                                 }]
+    //                                                 // title:{
+    //                                                 //   display: true,
+    //                                                 //   text: 'Number of beds average price' 
+    //                                                 // }
+    //                                               }
+
+    //                                             }
+
+
+    //                                           });
+    //     $('#bathLegend').html(mybathChart.generateLegend());
+    //   });
+
+
+{% endblock %}
