@@ -17,11 +17,19 @@
 
 
 
-
-
-
-<div class='c3'>
+<div id ='c3' style="
+style="
+    border: solid black;
+    width: 90%;
+    left: 10%;
+    margin: auto;
+    overflow: auto;
+    border-radius: 5px;
+    margin-top: 19px;
+    padding: 2%;">
+    
 	<form action= "/sht_value">
+		<div id="numbers"> 
 		<h2> Please Provide the following infomation </h2>
 		<h3> You can type your input or scroll through </h3>
 		<input type="number" name="{{features[0]}}" min="1850" value={{values.get(features[0])}}>{{features[0]}}
@@ -30,41 +38,45 @@
 		
 		<input type="number" name= "{{feature}}" min="0" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
+		</div >
 		{#
 			select all that apply(this is a comment)
 			#}
+			<div id="radio">
 
 		<h3> Please select all that apply </h3>
 		
 		{% for feature in features[9:15] %}
 		
+		
 		<input type="radio" name = "{{feature}}" value ={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
-		<input type="reset" value="Reset Values">
 
+			</div>
+
+			<div id="city">
+		
 		<h3> Please select one city </h3>
 		<br> <br>
 		{% for feature in features[15:] %}
+
+	
+
 		
 		<input type="checkbox" name= "{{feature}}" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 		{% endfor %}
 
-
-        {#
-		
-		{% for feature in features[15:22] %}
-		
-		<input type="number" name= "{{feature}}" value={{values.get(feature)}} > {{feature}}  <br/> <br/>
-		{% endfor %}
-
-		#}
+			</div>
 
 
-		<br/> <br/>
-		<input type="submit" value="Please SUBMIT FORM">
-		<br/> <br/>
+		<input type="submit" value="Please SUBMIT FORM"><br> <br>
 
-		<input type="reset" value="CLEAR FORM">
+		<input type="reset" value="CLEAR FORM"> <br> <br>
+
+		<input type="reset" value="Reset Values">
+
+	      </div>
+
 
 
 	</form>
