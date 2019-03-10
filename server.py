@@ -197,7 +197,7 @@ def stats_data():
 
 @app.route('/scatter.json')
 def scatter_data():
-    houses = dm.House.query.all()
+    houses = dm.House.query.filter(dm.House.sale_price <3000000).all()
     data =[house.get_chart() for house in houses]
 
     # a = [ big list comp]

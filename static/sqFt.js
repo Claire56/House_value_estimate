@@ -1,7 +1,7 @@
 
 
 
-    // Make scatter plot showing relatioship between price and  sqFt
+    // // Make scatter plot showing relatioship between price and  sqFt
     let ctx = $("#scatter1").get(0).getContext("2d");
 
     $.get("/scatter.json", function (data) {
@@ -60,7 +60,7 @@
 
 
                                               });
-        $('#bedLegend').html(myBedChart.generateLegend());
+        // $('#bedLegend').html(myBedChart.generateLegend());
       });
 
 
@@ -87,7 +87,7 @@
 
 
                                               });
-        $('#grgLegend').html(myGrgChart.generateLegend());
+        // $('#grgLegend').html(myGrgChart.generateLegend());
       });
 
 
@@ -115,7 +115,7 @@
 
 
                                               });
-        $('#poolLegend').html(myPoolChart.generateLegend());
+        // $('#poolLegend').html(myPoolChart.generateLegend());
       });
 
 
@@ -142,5 +142,5 @@ let bathBar = $("#baths").get(0).getContext("2d");
 
 
                                               });
-        $('#bathLegend').html(mybathChart.generateLegend());
+        // $('#bathLegend').html(mybathChart.generateLegend());
       });

@@ -12,52 +12,52 @@
 
 
 {% block content %}
+<!-- <br>
 <br>
-<br>
-<br>
+<br> -->
 
 	
-		<h2 class="c1">Thank you </h2> <br>
-        <br>
-		<h1 class="c1"> Your House's approximate value in {{chosen_city}} is  USD {{predicted }} </h1> 
+		<!-- <h2 class="c1">Thank you </h2> <br>
+        <br> -->
+		<div>
+            <span class="heading">Approximate value in {{chosen_city}} is  <b>USD {{predicted }} </b></span> 
+        </div>
 
-        <h3 class="c1"> below is a scatter plot showing how total square feet of a house affects price.</h3>
+        <!-- <h3 class="c1"> below is a scatter plot showing how total square feet of a house affects price.</h3> -->
+<div class="parent">
+
+<div class="bars children">
+        <canvas id="beds"></canvas>
+        <div id="bedLegend" class="chart-legend"></div>
+    </div>
+    <div class="pie children">
+        <canvas id="garage"></canvas>
+        <div id="grgLegend" class="chart-legend"></div>
+    </div>
 
 
+    <div class="bar children">
+        <canvas id="baths"></canvas>
+        <div id="bathLegend" class="chart-legend"></div>
+    </div>
 
-<div class="pie">
-    <canvas id="garage"></canvas>
-    <div id="grgLegend" class="chart-legend"></div>
+    <div class="pie children">
+        <canvas id="pool"></canvas>
+        <div id="poolLegend" class="chart-legend"></div>
+    </div>
+
+    
+
+    
+
+    <div class="priceSqft children twocols">
+        <canvas id="scatter1"></canvas>
+        <div id="scatterLegend" class="chart-legend"></div>
+      </div>
+
+
+    
 </div>
-
-
-
-<div class="bar">
-    <canvas id="baths"></canvas>
-    <div id="bathLegend" class="chart-legend"></div>
-</div>
-
-<div class="pie">
-    <canvas id="pool"></canvas>
-    <div id="poolLegend" class="chart-legend"></div>
-</div>
-
-
-
-<div class="bars">
-    <canvas id="beds"></canvas>
-    <div id="bedLegend" class="chart-legend"></div>
-</div>
-
-
-
-
-<div class="priceSqft">
-    <canvas id="scatter1"></canvas>
-    <div id="scatterLegend" class="chart-legend"></div>
-  </div>
-
-
 
 <!-- The has pool code  -->
 
