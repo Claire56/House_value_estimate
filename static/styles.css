@@ -50,12 +50,12 @@ body {
 }
 
 .home {
-  background-image: linear-gradient(to top, rgba(0,0,0, 0.7),
-    rgba(0,0,0, 0)), url('home.jpeg');
+  background-image: linear-gradient(to top, rgba(0,0,0, 0),
+    rgba(0,0,0, 0)), url('https://ssl.cdn-redfin.com/v252.3.1/images/homepage/banners/genHomepageDesktopBanner/SunnyVideo_Homepage.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 390px;
+  height: 50vh;
   position: relative;
 }
 
