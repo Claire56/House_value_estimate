@@ -55,7 +55,7 @@ body {
 
 .home {
   background-image: linear-gradient(to top, rgba(0,0,0, 0),
-    rgba(0,0,0, 0)), url('blueSky.jpg');
+    rgba(0,0,0, 0)), url('in1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -75,6 +75,10 @@ body {
   position: relative;
 }
 
+.featsize{
+  width: 25%
+}
+
 .btnsdiv {
   width: 40%;
 }
@@ -89,12 +93,12 @@ body {
 }
 .message {
     position: absolute;
-    bottom: 3px;
+    bottom: 40px;
     display: block;
     color: black;
     left: 30%;
-    font-size: 16px;
-    text-transform: uppercase;
+    font-size: 24px;
+    text-transform: ;
 }
 
 /* Add a black background color to the top navigation */
