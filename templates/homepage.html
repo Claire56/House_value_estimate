@@ -8,6 +8,30 @@
 <title> My homepage </title>
 <meta name="description" content="Home page">
 
+<script>
+$(document).ready(function(){
+var header = $('body');
+
+var backgrounds = new Array(
+    'url(american.jpg)'
+  , 'url(2-story.jpg)'
+  , 'url(bluesky.jpg)'
+  , 'url(arc.jpg)'
+);
+
+var current = 0;
+
+function nextBackground() {
+    current++;
+    current = current % backgrounds.length;
+    header.css('background-image', backgrounds[current]);
+}
+setInterval(nextBackground, 1000);
+
+header.css('background-image', backgrounds[0]);
+});
+</script>
+
 {% endblock %}
 
 
@@ -21,20 +45,11 @@
   
 </div>
 
-
-<br><br>
+<div id="main-content" >
 <h1 class="c1"> LOC-VALUATE YOUR HOME </h1>
 
-<div id="main-content" style="
-    border: solid black;
-    width: 90%;
-    left: 10%;
-    margin: auto;
-    overflow: auto;
-    border-radius: 5px;
-    margin-top: 19px;
-    padding: 2%;
-">
+
+    <!--
     <div id="main-images" style="
     border: solid black;
     width: 60%;
@@ -43,29 +58,26 @@
     border-radius: 5px;
 ">
     	<img src="static/home.jpeg" id="hse2" class="center" style="width: 100%">         
-	</div>
+	</div> !-->
     
-    <div style="
-    border: solid black;
-    width: 30%;
-    float: right;
-    margin: auto;
-    border-radius: 5px;
-">
-        <span>Locations</span>
+    <div class="citynames">
+        <span>Estimate the value of your home in these cities </span>
         <ul style="
     list-style-type: none;
-">
-            <li><a href="/home-info"> <h6 class="c2">  Erinville,Canada </h6> </a></li>
-            <li><a href="/home-info"> <h6 class="c2"> Andrea Land,Oaklahoma </h6> </a></li>
-            <li><a href="/home-info"> <h6 class="c2"> East Lucas,Iowa </h6> </a></li>
+"> <br>
+            <li><a href="/home-info"> <h5 class="c2">  Erinville,Canada </h6> </a></li>
+            <li><a href="/home-info"> <h5 class="c2"> Andrea Land,Oaklahoma </h6> </a></li>
+            <li><a href="/home-info"> <h5 class="c2"> East Lucas,Iowa </h6> </a></li>
             <li><a href="/home-info"> <h6 class="c2"> Sara ann,W.Virginia </h6> </a></li>
             <li><a href="/home-info"> <h6 class="c2"> Jonathan Borough, Delaware! </h6></a></li> 
-            <li><a href="/home-info"> <h6 class="c2"> START HERE ! </h6> </a></li>
+            <br>
+            <li><a href="/home-info"> <h4 class="c2"> START HERE ! </h4> </a></li>
         </ul>
     </div>
        
 </div>
+
+<!--
 
 <button id= 'pic1'>Change Picture </button>
 
@@ -84,6 +96,6 @@ button1.addEventListener('click' , picChange);
 
 
 </script>
-
+<!-->
 
 {% endblock %}

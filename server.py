@@ -140,7 +140,7 @@ def grg_data():
 
     jdata = data.to_json() #this can jsonify a dataframe but dont need it 
 
-    data = { "labels": ['Attached','Detached','None'], #"data": [round(i,2) for i in y]}
+    data = { "labels": ['garage attached','Detached','None'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
@@ -287,8 +287,8 @@ def fireplace_data():
 @app.route('/baths.json')
 def baths_data():
 
-    baths = dm.House.query.with_entities(dm.House.num_bedrooms ,
-        func.avg(dm.House.sale_price)).group_by(dm.House.num_bedrooms).order_by(dm.House.num_bedrooms).all()
+    baths = dm.House.query.with_entities(dm.House.full_bathrooms ,
+        func.avg(dm.House.sale_price)).group_by(dm.House.full_bathrooms).order_by(dm.House.full_bathrooms).all()
 
     jdata = json.dumps(baths, cls=dm.DecimalEncoder)# uses DecimalEnconder to make json
     

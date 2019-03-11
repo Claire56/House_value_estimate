@@ -14,7 +14,7 @@
 
 
 	<div class="home">
-		<span class="message">Loc valuate your home</span>
+		<span class="message"> <b>Provide Home Features and get an estimate </b></span>
 	</div>
 
 
@@ -27,7 +27,7 @@
 		<div class="homeinfo">
 
 		<div id="numbers" class="homeinfokids"> 
-			<h4> You can type your input </h4>
+			<h4> Type or scroll </h4>
 			<input type="number" name="{{features[0]}}" min="1850" class="c1" value={{values.get(features[0])}}> {{features[0]}}
 			<br> 
 			{% for feature in features[1:9] %}
@@ -43,7 +43,7 @@
 		<div id="radio" class="homeinfokids">
 
 
-			<h4> Please select all that apply </h4>
+			<h4> Select all that apply </h4>
 			
 			{% for feature in features[9:15] %}
 			
@@ -55,7 +55,7 @@
 
 		<div id="city" class="homeinfokids">
 		
-			<h4> Please select one city </h4>
+			<h4> Choose one city </h4>
 			
 			{% for feature in features[15:] %}
 
