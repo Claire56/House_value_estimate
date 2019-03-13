@@ -87,16 +87,16 @@ body {
   top: 80px;
   display: block;
   color:white;
-  left: 5%;
+  left: 1%;
   font-size: 28px;
   
 }
 .message {
     position: absolute;
-    bottom: 40px;
+    top: 80px;
     display: block;
     color: black;
-    left: 30%;
+    left: 25%;
     font-size: 24px;
     text-transform: ;
 }
