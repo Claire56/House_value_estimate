@@ -42,7 +42,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 10px 10% 0 10%;
+  margin: 20px 10% 0 10%;
   background-color: #f3f2f2;
   border-radius: 15px;
   padding: 10px;
@@ -50,7 +50,7 @@ body {
 }
 
 .homeinfokids{
-  width: 30%;
+  width: 20%;
 }
 
 .home {
@@ -93,7 +93,7 @@ body {
 }
 .message {
     position: absolute;
-    top: 80px;
+    bottom: 60px;
     display: block;
     color: black;
     left: 25%;

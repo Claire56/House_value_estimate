@@ -140,11 +140,13 @@ def grg_data():
 
     jdata = data.to_json() #this can jsonify a dataframe but dont need it 
 
+    data = [round(i,) for i in data.sale_price]     
+
     data = { "labels": ['garage attached','Detached','None'], #"data": [round(i,2) for i in y]}
 
               "datasets" : [ 
               {
-                        "data": [round(i,2) for i in data.sale_price],
+                        "data":[d for d in data] ,
                         "backgroundColor": ['pink', 'yellow','grey'],
                         'collectionAlias': "Average Price",
                         'label': "Average price per garage type ",
@@ -220,7 +222,7 @@ def bed_mean_data():
 
               "datasets" : [ 
               {
-                        "data": [round(i,2) for i in y],
+                        "data": [round(i,) for i in y],
                         "backgroundColor": ['purple']*11,
                         'collectionAlias': "Average Price",
                         'label': "Average price per No of bedrooms ",
@@ -246,7 +248,7 @@ def pool_mean_data():
 
               "datasets" : [ 
               {
-                        "data": [round(i,2) for i in y],
+                        "data": [round(i,) for i in y],
                         "backgroundColor": ['red','green'],
                         'collectionAlias': "Average Price",
                         'label': "Average price ",
@@ -273,7 +275,7 @@ def fireplace_data():
 
               "datasets" : [ 
               {
-                        "data": [round(i,2) for i in y],
+                        "data": [round(i,) for i in y],
                         "backgroundColor": ['red','green'],
                         'collectionAlias': "Average Price ",
                         'label': "Average price ",
@@ -301,7 +303,7 @@ def baths_data():
 
               "datasets" : [ 
               {
-                        "data": [round(i,2) for i in y],
+                        "data": [round(i,) for i in y],
                         "backgroundColor": ['blue']*11,
                         'collectionAlias': "Average Price ",
                         'label': "Average price per No of bathrooms ",

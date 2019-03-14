@@ -48,7 +48,7 @@
 			{% for feature in features[9:15] %}
 			
 			
-			<input type="radio" name = "{{feature}}" class="featsize" value ={{values.get(feature)}}> {{feature}}  <br/> <br/> 
+			<input type="checkbox" name = "{{feature}}" class="featsize" value ={{values.get(feature)}}> {{feature}}  <br/> <br/> 
 			{% endfor %}
 
 		</div>
@@ -62,14 +62,14 @@
 		
 
 			
-			<input type="checkbox" name= "{{feature}}" class="c1 featsize" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
+			<input type="radio" name= "{{feature}}" class="c1 featsize" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 			{% endfor %}
 
 		</div>
 		<div class="homeinfokids btnsdiv">
 
 			
-            <input type="reset" value="Reset Values">
+            <input type="reset" value="CLEAR CITY">
 
 			<input type="submit" value="SUBMIT FORM">
 
