@@ -97,9 +97,10 @@ body {
 }
 .message {
     position: absolute;
-    bottom: 60px;
+    bottom: 17px;
     display: block;
-    color: black;
+    text-shadow: 2px 2px 2px black;
+    color: white;
     left: 25%;
     font-size: 24px;
     text-transform: ;
