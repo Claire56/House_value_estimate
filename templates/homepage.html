@@ -8,7 +8,7 @@
 <title> My homepage </title>
 <meta name="description" content="Home page">
 
-<script>
+<!-- <script>
 $(document).ready(function(){
 var header = $('body');
 
@@ -31,7 +31,7 @@ setInterval(nextBackground, 1000);
 header.css('background-image', backgrounds[0]);
 });
 </script>
-
+ -->
 {% endblock %}
 
 
@@ -65,13 +65,14 @@ header.css('background-image', backgrounds[0]);
         <ul style="
     list-style-type: none;
 "> 
-            <li><a href="/home-info"> <h4 class="c2">  Erinville, Canada </h6> </a></li>
-            <li><a href="/home-info"> <h4 class="c2"> Andrea Land, Oklahoma </h6> </a></li>
-            <li><a href="/home-info"> <h4 class="c2"> East Lucas, Iowa </h6> </a></li>
-            <li><a href="/home-info"> <h4 class="c2"> Sara Ann, West Virginia </h6> </a></li>
-            <li><a href="/home-info"> <h4 class="c2"> Jonathan Borough, Delaware! </h6></a></li> 
+            <li><h4 class="c2">  Erinville, Canada </h6></li>
+            <li><h4 class="c2"> Andrea Land, Oklahoma </h6> </a></li>
+            <li><h4 class="c2"> East Lucas, Iowa </h6> </a></li>
+            <li><h4 class="c2"> Sara Ann, West Virginia </h6> </a></li>
+            <li><h4 class="c2"> Jonathan Borough, Delaware</h6></a></li> 
+            <li><h4 class="c2"> Cape May, New Jersey </h6></a></li> 
             
-            <li><a href="/home-info"> <h3 class="c2"> START HERE ! </h4> </a></li>
+            <li><a href="/home-info"> <h3 class="c2" id="homelink"> Get Estimate </h4> </a></li>
         </ul>
     </div>
        
