@@ -22,8 +22,13 @@ features = x_features()
 features =[f.replace('_',' ') for f in features ]
 features =[f.replace('city','') for f in features ]
 print(f'these are the {features}')
+f = features[:15]
+e = ["East Lucas, Iowa","Erinville, Canada","Andrea Land, Oklahoma",
+"Jonathan Borough, Delaware","Cape May, New Jersey","Sara Ann, West Virginia"]
+f.extend(e)
+features = f
 
-
+print(f'these are the {features}')
 #Add Routes
 @app.route('/')
 def homepage():
