@@ -51,7 +51,8 @@ Navigate to localhost:5000 in browser.
 
 
 ## Demo
-HOMEPAGE
+HOMEPAGE <br>
+Below is muy landing page <br>
 ![home](/static/home.gif)
 
 ## Future Features
