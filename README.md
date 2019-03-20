@@ -22,6 +22,37 @@ Backend: Python, SQLAlchemy, PostgreSQL ,SciKit_Learn <br>
 Frontend: Javascript , AJAX, JSON , JQuery, Jinja, HTML, CSS, Bootstrap <br>
 Libraries: D3.js, chart.js
 
+Setup/Installation
+On local machine, go to desired directory. Clone  repository:
+
+$ git clone https://github.com/Claire-Kimbugwe/House_value_estimate
+Create a virtual environment in the directory:
+
+$ virtualenv env
+Activate virtual environment:
+
+$ source env/bin/activate
+Install dependencies:
+
+$ pip install -r requirements.txt
+Create database:
+
+$ createdb music
+Build database:
+
+$ python3 -i model.py
+>>> db.create_all()
+Seed database:
+
+$ python3 -i seed.py
+Run app:
+
+$ python3 server.py
+Navigate to localhost:5000 in browser.
+
+
+## Demo
+
 ## Future Features
 * utelise housing API's to get running data that will be used in training the machine learning model
 * Add a login page for frequent visitors 
