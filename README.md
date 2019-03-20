@@ -59,6 +59,8 @@ Below is muy landing page <br><br>
 On this page the users provide their home features <br><br>
 ![features](/static/features.gif)
 
+### Provide estimate to the users 
+Here the users recieve their home estimate and a few statistics <br>
 ![graphs](/static/graphs.gif)
 
 
