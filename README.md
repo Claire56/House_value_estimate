@@ -34,8 +34,9 @@ Activate virtual environment:<br>
 $ source env/bin/activate<br><br>
 Install dependencies:<br>
 $ pip install -r requirements.txt <br>
-Create database:<br>
-$ createdb music<br>
+Create database:<br><br>
+
+$ createdb homes<br>
 Build database:<br>
 
 $ python3 -i model.py<br>
