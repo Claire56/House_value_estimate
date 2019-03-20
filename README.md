@@ -29,17 +29,17 @@ $ git clone https://github.com/Claire-Kimbugwe/House_value_estimate <br>
 Create a virtual environment in the directory:
 
 $ virtualenv env<br>
-Activate virtual environment:
+Activate virtual environment:<br>
 
 $ source env/bin/activate<br><br>
-Install dependencies:
+Install dependencies:<br>
 $ pip install -r requirements.txt <br>
-Create database:
-$ createdb music
-Build database:
+Create database:<br>
+$ createdb music<br>
+Build database:<br>
 
-$ python3 -i model.py
->>> db.create_all()
+$ python3 -i model.py<br>
+>>> db.create_all() <br>
 Seed database:
 
 $ python3 -i seed.py <br>
