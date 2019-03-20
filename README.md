@@ -56,8 +56,11 @@ Below is muy landing page <br><br>
 ![home](/static/home.gif)
 
 #### Get iformation about user's home
-On this page the users provide their home features
+On this page the users provide their home features <br>
 ![features] (/static/features.gif)
+
+![graphs] (/static/graphs.gif)
+
 
 ## Future Features
 * utelise housing API's to get running data that will be used in training the machine learning model
