@@ -16,10 +16,10 @@ cost of a house with a pool vs the one with out a pool.
 
 
 ## Tech Stack
-Data Wrangling: Pandas, Numpy , seaborn, matplotlib
-Framework: Flask
-Backend: Python, SQLAlchemy, PostgreSQL ,SciKit_Learn
-Frontend: Javascript , AJAX, JSON , JQuery, Jinja, HTML, CSS, Bootstrap
+Data Wrangling: Pandas, Numpy , seaborn, matplotlib <br>
+Framework: Flask <br>
+Backend: Python, SQLAlchemy, PostgreSQL ,SciKit_Learn <br>
+Frontend: Javascript , AJAX, JSON , JQuery, Jinja, HTML, CSS, Bootstrap <br>
 Libraries: D3.js, chart.js
 
 ## Future Features
