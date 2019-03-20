@@ -31,12 +31,10 @@ Create a virtual environment in the directory:
 $ virtualenv env<br>
 Activate virtual environment:
 
-$ source env/bin/activate<br>
+$ source env/bin/activate<br><br>
 Install dependencies:
-
-$ pip install -r requirements.txt
+$ pip install -r requirements.txt <br>
 Create database:
-
 $ createdb music
 Build database:
 
@@ -44,10 +42,10 @@ $ python3 -i model.py
 >>> db.create_all()
 Seed database:
 
-$ python3 -i seed.py
+$ python3 -i seed.py <br>
 Run app:
 
-$ python3 server.py
+$ python3 server.py <br>
 Navigate to localhost:5000 in browser.
 
 
