@@ -25,13 +25,13 @@ Libraries: D3.js, chart.js
 Setup/Installation
 On local machine, go to desired directory. Clone  repository:
 
-$ git clone https://github.com/Claire-Kimbugwe/House_value_estimate
+$ git clone https://github.com/Claire-Kimbugwe/House_value_estimate <br>
 Create a virtual environment in the directory:
 
-$ virtualenv env
+$ virtualenv env<br>
 Activate virtual environment:
 
-$ source env/bin/activate
+$ source env/bin/activate<br>
 Install dependencies:
 
 $ pip install -r requirements.txt
