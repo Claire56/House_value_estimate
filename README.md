@@ -51,9 +51,13 @@ Navigate to localhost:5000 in browser.
 
 
 ## Demo
-HOMEPAGE <br>
-Below is muy landing page <br>
+### HOMEPAGE <br>
+Below is muy landing page <br><br>
 ![home](/static/home.gif)
+
+#### Get iformation about user's home
+On this page the users provide their home features
+![features] (/static/features.gif)
 
 ## Future Features
 * utelise housing API's to get running data that will be used in training the machine learning model
