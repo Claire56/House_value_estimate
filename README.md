@@ -57,9 +57,9 @@ Below is muy landing page <br><br>
 
 #### Get iformation about user's home
 On this page the users provide their home features <br>
-![features] (/static/features.gif)
+![features](/static/features.gif)
 
-![graphs] (/static/graphs.gif)
+![graphs](/static/graphs.gif)
 
 
 ## Future Features
