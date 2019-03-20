@@ -52,7 +52,7 @@ Navigate to localhost:5000 in browser.
 
 ## Demo
 HOMEPAGE
-(/static/images/readme/home.gif)
+(home.gif)
 
 ## Future Features
 * utelise housing API's to get running data that will be used in training the machine learning model
