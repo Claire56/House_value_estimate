@@ -60,7 +60,11 @@ Below are a few visuals from my notebook
 ![explore](/static/explore1.gif)<br> <br>
 ### Popularity of features based on the number of homes
 ![explore](/static/explore3.gif)<br> <br>
+
+### Pie charts showing popularity of features
 ![explore](/static/explore2.gif)<br>
+### ML Algorithmns 
+I had a chance to explore three different algorithmns, the linear regression, K-Nearest neighbor and gradient Boasting. I decided to use the Gradient boasting model because of its high prediction score and low mean absolute error rate
 ![explore](/static/ML.gif)<br> <br>
 ### HOMEPAGE <br>
 Below is muy landing page <br><br>
