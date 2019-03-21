@@ -9,7 +9,7 @@ Zyzy is a webapp that uses machine learning to estimate the value of your home i
 * Future Features
 
 ## Overview
-Zyzy app is a fun web app that users can enjoy by finding out how much their home would cost if it where in a different location. The brain of the app was built using machine learning. This included a long task of exploring and wrangling data, using pandas, matplotlib and seaborn. To make the best predictions, I explored three machine leafrning algorithmns as you will see in the demo to get a better feel of each ones contribution. once the user gets to my homepage, I present to them the scope of the app(the available cities), 
+Have you ever wondered how much your home would cost if it were in a different location?? well if you have, Zyzy is here for you. Zyzy is a fun web app that users can enjoy by finding out how much their home would cost if it where in a different location. The brain of the app was built using machine learning. This included a long task of exploring and wrangling data, using pandas, matplotlib and seaborn. To make the best predictions, I explored three machine leafrning algorithmns as you will see in the demo to get a better feel of each ones contribution. once the user gets to my homepage, I present to them the scope of the app(the available cities), 
 they are then required to provide features of their home and also to choose a city they would like the estimate to be based off.
 In return they get the estimated price of their home in their chosen city and a few general statistics will be shown using chart.js 
 
@@ -51,6 +51,15 @@ Navigate to localhost:5000 in browser.
 
 
 ## Demo
+### Data Wrangling and Exploration
+I used jupyter notebook on anaconda to wrangle data and to explore trends and relations <br>
+Below are a few visuals from my notebook <br> <br>
+
+![explore](/static/explore1)
+
+![explore](/static/explore3)
+![explore](/static/explore2)
+![explore](/static/ML)
 ### HOMEPAGE <br>
 Below is muy landing page <br><br>
 ![home](/static/home.gif)
