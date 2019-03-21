@@ -53,13 +53,13 @@ Navigate to localhost:5000 in browser.
 ## Demo
 ### Data Wrangling and Exploration
 I used jupyter notebook on anaconda to wrangle data and to explore trends and relations <br>
-Below are a few visuals from my notebook <br> <br>
+Below are a few visuals from my notebook c
 
 ![explore](/static/explore1.gif)
 
 ![explore](/static/explore3.gif)
-![explore](/static/explore2.gif)
-![explore](/static/ML.gif)
+![explore](/static/explore2.gif)<br>
+![explore](/static/ML.gif)<br> <br>
 ### HOMEPAGE <br>
 Below is muy landing page <br><br>
 ![home](/static/home.gif)
