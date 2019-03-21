@@ -55,11 +55,11 @@ Navigate to localhost:5000 in browser.
 I used jupyter notebook on anaconda to wrangle data and to explore trends and relations <br>
 Below are a few visuals from my notebook <br> <br>
 
-![explore](/static/explore1)
+![explore](/static/explore1.gif)
 
-![explore](/static/explore3)
-![explore](/static/explore2)
-![explore](/static/ML)
+![explore](/static/explore3.gif)
+![explore](/static/explore2.gif)
+![explore](/static/ML.gif)
 ### HOMEPAGE <br>
 Below is muy landing page <br><br>
 ![home](/static/home.gif)
