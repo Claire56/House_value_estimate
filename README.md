@@ -9,10 +9,10 @@ Zyzy is a webapp that uses machine learning to estimate the value of your home i
 * Future Features
 
 ## Overview
-once thhe user geets to the landing page, I present to them the scope of the app(cities)available for the estimates, 
-they are then required to provide features of their house and also to choose a city they would like the estimate to be based off.
-In return they get the estimated price of their house in the chosen city and a few general statistics like the average 
-cost of a house with a pool vs the one with out a pool.
+Zyzy app is a fun web app that users can enjoy by finding out how much their home would cost if it where in a different location. The brain of the app was built using machine learning. This included a long task of exploring and wrangling data, using pandas, matplotlib and seaborn. To make the best predictions, I explored three machine leafrning algorithmns as you will see in the demo to get a better feel of each ones contribution. once the user gets to my homepage, I present to them the scope of the app(the available cities), 
+they are then required to provide features of their home and also to choose a city they would like the estimate to be based off.
+In return they get the estimated price of their home in their chosen city and a few general statistics will be shown using chart.js 
+
 
 
 ## Tech Stack
