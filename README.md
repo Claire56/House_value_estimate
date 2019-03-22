@@ -1,5 +1,5 @@
 # Zyzy 
-Zyzy is a webapp that uses machine learning to estimate the value of your home in a different location.
+Zyzy is a webapp that uses machine learning to estimate the value of a home in a different location.
 
 ## Table of Contents
 * Overview
@@ -9,8 +9,10 @@ Zyzy is a webapp that uses machine learning to estimate the value of your home i
 * Future Features
 
 ## Overview
-Have you ever wondered how much your home would cost if it were in a different location?? well if you have, Zyzy is here for you. Zyzy is a fun web app that users can enjoy by finding out how much their home would cost if it where in a different location. The brain of the app was built using machine learning. This included a long task of exploring and wrangling data, using pandas, matplotlib and seaborn. To make the best predictions, I explored three machine learning algorithmns as you will see in the demo to get a better feel of each ones contribution. once the user gets to my homepage, I present to them the scope of the app(the available cities), 
-they are then required to provide features of their home and also to choose a city they would like the estimate to be based off.
+Have you ever wondered how much your home would cost if it were in a different location?? well if you have, Zyzy is here for you. Zyzy is a fun web app that users can enjoy by finding out how much their home would cost if it where in a different location. The brain of the app was built using the gradient boasting machine learning algorithm. This included a long task of exploring and wrangling data, using pandas, matplotlib and seaborn. To make the best predictions, I explored three machine learning algorithmns as you will see in the demo to get a better feel of each one's contribution.
+#### Usage
+once the user gets to my homepage, I present to them the scope of the app(the available cities)
+They are then required to provide features of their home and also to choose a city of interest. That information is then sent to a handler and is used to predict the price of their house.
 In return they get the estimated price of their home in their chosen city and a few general statistics will be shown using chart.js 
 
 
