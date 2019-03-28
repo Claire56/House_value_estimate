@@ -41,27 +41,45 @@ Below are a few visuals from my notebook
 <a href="https://github.com/claire_kimbugwe">
     <img alt="explore" src="/static/explore1.gif" width="800">
     </a>
-
+<br> <br>
 ### Popularity of features based on the number of homes
-![explore](/static/explore3.gif)<br> <br>
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/explore3.gif" width="800">
+    </a>
+
 
 ### Pie charts showing popularity of features
-![explore](/static/explore2.gif)<br>
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/explore2.gif" width="800">
+    </a>
+<br> <br>
 ### ML Algorithmns 
 I had a chance to explore three different algorithmns, the linear regression, K-Nearest neighbor and gradient Boasting. I decided to use the Gradient boasting model because of its high prediction score and low mean absolute error rate
-![explore](/static/ML.gif)<br> <br>
+
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/ML.gif" width="800">
+    </a>
+
+<br> <br>
 ### HOMEPAGE <br>
 Below is muy landing page <br><br>
-![home](/static/home.gif)
 
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/home.gif" width="800">
+    </a>
+<br> <br>
 #### Get iformation about user's home
 On this page the users provide their home features <br><br>
-![features](/static/features.gif)
 
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/features.gif" width="800">
+    </a>
+
+<br> <br>
 ### Provide estimate to the users 
 Here the users recieve their home estimate and a few statistics <br>
 ![graphs](/static/graphs.gif)
-
+<br> <br>
 ## Setup and installation
 On local machine, go to desired directory. Clone  repository:
 
