@@ -41,8 +41,9 @@ Below are a few visuals from my notebook
 <a href="https://github.com/claire_kimbugwe">
     <img alt="explore" src="/static/explore1.gif" width="800">
     </a>
-<br> <br>
+
 ### Popularity of features based on the number of homes
+
 <a href="https://github.com/claire_kimbugwe">
     <img alt="explore" src="/static/explore3.gif" width="800">
     </a>
