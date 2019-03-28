@@ -68,8 +68,8 @@ Below is muy landing page <br><br>
 <a href="https://github.com/claire_kimbugwe">
     <img alt="explore" src="/static/home.gif" width="800">
     </a>
-<br> <br>
-#### Get iformation about user's home
+
+#### Get iformation about user's home <br>
 On this page the users provide their home features <br><br>
 
 <a href="https://github.com/claire_kimbugwe">
