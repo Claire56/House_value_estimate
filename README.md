@@ -49,11 +49,11 @@ Below are a few visuals from my notebook
     </a>
 
 
-### Pie charts showing popularity of features
+### Pie charts showing popularity of features <br>
 <a href="https://github.com/claire_kimbugwe">
     <img alt="explore" src="/static/explore2.gif" width="800">
     </a>
-<br> <br>
+
 ### ML Algorithmns <br>
 I had a chance to explore three different algorithmns, the linear regression, K-Nearest neighbor and gradient Boasting. I decided to use the Gradient boasting model because of its high prediction score and low mean absolute error rate
 
