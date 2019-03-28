@@ -38,7 +38,10 @@ Below are a few visuals from my notebook
 
 ### Relationships between price and other features of the home
 
-![explore](/static/explore1.gif)<br> <br>
+<a href="https://github.com/claire_kimbugwe">
+    <img alt="explore" src="/static/explore1.gif" width="800">
+    </a>
+
 ### Popularity of features based on the number of homes
 ![explore](/static/explore3.gif)<br> <br>
 
@@ -86,34 +89,6 @@ Run app:
 $ python3 server.py <br>
 Navigate to localhost:5000 in browser.
 
-
-## Demo
-### Data Wrangling and Exploration
-I used jupyter notebook on anaconda to wrangle data and to explore trends and relations <br>
-Below are a few visuals from my notebook 
-
-### Relationships between price and other features of the home
-
-![explore](/static/explore1.gif)<br> <br>
-### Popularity of features based on the number of homes
-![explore](/static/explore3.gif)<br> <br>
-
-### Pie charts showing popularity of features
-![explore](/static/explore2.gif)<br>
-### ML Algorithmns 
-I had a chance to explore three different algorithmns, the linear regression, K-Nearest neighbor and gradient Boasting. I decided to use the Gradient boasting model because of its high prediction score and low mean absolute error rate
-![explore](/static/ML.gif)<br> <br>
-### HOMEPAGE <br>
-Below is muy landing page <br><br>
-![home](/static/home.gif)
-
-#### Get iformation about user's home
-On this page the users provide their home features <br><br>
-![features](/static/features.gif)
-
-### Provide estimate to the users 
-Here the users recieve their home estimate and a few statistics <br>
-![graphs](/static/graphs.gif)
 
 
 ## Future Features
