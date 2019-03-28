@@ -2,7 +2,7 @@
 Zyzy is a webapp that uses machine learning to estimate the value of a home in a different location.
 <h1 align="center">
   <a href="https://github.com/denysdovhan/spaceship-prompt">
-    <img alt="graphs" src="/static/graphs.gif" width="700">
+    <img alt="graphs" src="/static/graphs.gif" width="800">
     </h1>
 
 ### Provide estimate to the users 
