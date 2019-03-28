@@ -10,8 +10,8 @@ Here the users recieve their home estimate and a few statistics <br> <br>
 
 ## Table of Contents
 * [Overview](#Overview)
-* [Tech Stack](#Tech Stack)
-* [Setup/Installation](#Setup/Installation)
+* [Tech Stack](#Tech-Stack)
+* [Setup and installation](#Setup-and-installation)
 * [Demo](#Demo)
 * [Future Features](#Future-Features)
 
@@ -59,7 +59,7 @@ On this page the users provide their home features <br><br>
 Here the users recieve their home estimate and a few statistics <br>
 ![graphs](/static/graphs.gif)
 
-## Setup/Installation
+## Setup and installation
 On local machine, go to desired directory. Clone  repository:
 
 $ git clone https://github.com/Claire-Kimbugwe/House_value_estimate <br>
